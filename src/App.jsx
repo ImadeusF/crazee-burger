@@ -1,35 +1,34 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import LoginPage from "./components/pages/LoginPage.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [prenom, setPrenom] = useState("");
+
+  const handleSubmit = (e) => {
+    if (!e.target.closest("form").checkValidity()) {
+      return; // Ne bloquez pas le comportement natif du navigateur
+    } else {
+      e.preventDefault();
+      alert(`Bonjour ${prenom}!`);
+      setPrenom("");
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <p>Salut imadeus</p>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <LoginPage />
+      <h1>Bienvenue chez nous!</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={prenom}
+          placeholder="Entrez votre prénom"
+          required
+          onChange={(e) => setPrenom(e.target.value)}
+        />
+        <button type="submit">Accéder à votre espace</button>
+      </form>
+    </div>
   );
 }
 
