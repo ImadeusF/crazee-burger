@@ -1,9 +1,9 @@
 import LoginForm from "./LoginForm";
 
-export default function LoginPage() {
+export default function LoginPage({ setUsername }) {
   return (
     <div>
-      <LoginForm />
+      <LoginForm setUsername={setUsername} />
     </div>
   );
 }
