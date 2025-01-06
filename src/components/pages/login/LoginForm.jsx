@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { theme } from "../../../themes";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
-import TextInput from "./TextInput";
+import TextInput from "../reusable-ui/TextInput";
+import PrimaryButton from "../reusable-ui/PrimaryButton";
 
 export default function LoginForm() {
   const [inputValue, setInputValue] = useState("");
@@ -35,10 +36,10 @@ export default function LoginForm() {
         required
         Icon={<BsPersonCircle className="icon"/>}  
         />
-        <button className="button-with-icon">
-          <span>Accéder à votre espace</span>
-          <IoChevronForward/>
-        </button>
+        <PrimaryButton
+        label={"Accéder à votre espace"}
+        Icon={<IoChevronForward className="icon"/>}
+        />
       </div>
     </LoginFormStyled>
   );
@@ -68,49 +69,12 @@ const LoginFormStyled = styled.form`
     margin: 20px 10px;
     font-size: ${theme.fonts.P4};
   }
-
-
-  .button-with-icon {
-    width: 100%;
-    display: inline-flex;
+    
+  .icon {
+    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    white-space: nowrap;
-    text-decoration: none;
-    line-height: 1;
-
-    padding:18px 24px;
-    border-radius: 5px;
     font-size: 15px;
-    font-weight: ${theme.fonts.heavy};
-    color: ${theme.colors.white};
-    background: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
-
-    &:active {
-      color: ${theme.colors.white};
-      background: ${theme.colors.primary};
-      border: 1px solid ${theme.colors.primary};
-    }
-
-    &:hover:not(:disabled) {
-      color: ${theme.colors.primary};
-      background: ${theme.colors.white};
-      border: 1px solid ${theme.colors.primary};
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 15px;
-      margin-left: 10px;
-    }
+    margin-left: 10px;
   }
 `

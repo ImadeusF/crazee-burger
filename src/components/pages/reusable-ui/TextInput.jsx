@@ -40,4 +40,4 @@ const InputStyled = styled.div`
       background: ${theme.colors.white};
       color: ${theme.colors.greyLight};
     }
-`
+`;
