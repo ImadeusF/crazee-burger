@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../themes";
 import { IoChevronForward } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import Input from "./Input";
 
 export default function LoginForm() {
   const [inputValue, setInputValue] = useState("");
@@ -27,16 +28,13 @@ export default function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div>
-        <div className="input-with-icon">
-          <BsPersonCircle className="icon"/>
-          <input
-            type="text"
-            value={inputValue}
-            placeholder="Entrez votre prénom"
-            required
-            onChange={handleChange}
-          />
-        </div>
+        <Input 
+        value={inputValue} 
+        onChange={handleChange} 
+        placeholder={"Entrez votre prénom"}
+        required
+        Icon={<BsPersonCircle className="icon"/>}  
+        />
         <button className="button-with-icon">
           <span>Accéder à votre espace</span>
           <IoChevronForward/>
@@ -71,32 +69,6 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
   }
 
-  .input-with-icon {
-    background: ${theme.colors.white};
-    border-radius: 5px;
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    margin: 18px 0;
-
-    .icon {
-    color:red;
-    font-size: 15px;
-    margin-right:8px;
-    color: ${theme.colors.greyMedium};
-    }
-
-    input {
-      border: none;
-      font-size: 15px;
-      width:100%;
-    }
-
-    &::placeholder {
-      background: ${theme.colors.white};
-      color: ${theme.colors.greyLight};
-    }
-  }
 
   .button-with-icon {
     width: 100%;
