@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router";
 import { theme } from "../../../themes";
 import styled from "styled-components";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 export default function OrderPage() {
   const { username } = useParams(); //paramètres de l'url
@@ -9,14 +11,8 @@ export default function OrderPage() {
   return (
     <OrderPageStyle>
       <div className="container">
-        <div className="navbar">
-          Navbar
-          <h1>Hey, {username}</h1>
-          <Link to="/">
-            <button>Déconnexion</button>
-          </Link>
-        </div>
-        <div className="main">Main</div>
+        <Navbar username={username} />
+        <Main />
       </div>
     </OrderPageStyle>
   );
@@ -35,14 +31,5 @@ const OrderPageStyle = styled.div`
     width: 1400px;
     display: flex;
     flex-direction: column;
-
-    .navbar {
-      height: 10vh;
-    }
-
-    .main {
-      background: green;
-      flex: 1;
-    }
   }
 `;
