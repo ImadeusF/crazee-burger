@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar";
@@ -26,10 +26,10 @@ const OrderPageStyle = styled.div`
   align-items: center;
 
   .container {
-    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
