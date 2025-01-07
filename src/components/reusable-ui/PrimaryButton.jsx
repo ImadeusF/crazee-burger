@@ -21,9 +21,9 @@ const PrimaryButtonStyle = styled.button`
   line-height: 1;
 
   padding: 18px 24px;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: ${theme.fonts.heavy};
+  border-radius: ${theme.borderRadius.round};
+  font-size: ${theme.fonts.size.P0};
+  font-weight: ${theme.fonts.weights.heavy};
   color: ${theme.colors.white};
   background: ${theme.colors.primary};
   border: 1px solid ${theme.colors.primary};
