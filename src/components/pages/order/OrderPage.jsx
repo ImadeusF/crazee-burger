@@ -9,10 +9,14 @@ export default function OrderPage() {
   return (
     <OrderPageStyle>
       <div className="container">
-        <h1>Bonjour {username}</h1>
-        <Link to="/">
-          <button>Déconnexion</button>
-        </Link>
+        <div className="navbar">
+          Navbar
+          <h1>Hey, {username}</h1>
+          <Link to="/">
+            <button>Déconnexion</button>
+          </Link>
+        </div>
+        <div className="main">Main</div>
       </div>
     </OrderPageStyle>
   );
@@ -21,13 +25,24 @@ export default function OrderPage() {
 const OrderPageStyle = styled.div`
   background: ${theme.colors.primary};
   height: 100vh;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    background: ${theme.colors.white};
+    background: red;
     height: 95vh;
-    width:1400px;F
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+
+    .navbar {
+      height: 10vh;
+    }
+
+    .main {
+      background: green;
+      flex: 1;
+    }
   }
 `;
