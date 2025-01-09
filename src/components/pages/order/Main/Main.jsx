@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../themes";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import { theme } from "../../../../themes";
 
 export default function Main() {
   return (
