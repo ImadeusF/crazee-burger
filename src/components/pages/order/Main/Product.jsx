@@ -44,7 +44,7 @@ const ProductStyled = styled.div`
     }
   }
 
-  .description {
+  .info-texte {
     border: 1px solid blue;
   }
 `;
