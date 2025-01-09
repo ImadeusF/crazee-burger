@@ -23,7 +23,7 @@ export const fakeMenu2 = [
   {
     id: 1,
     imageSource: "/images/burger-bacon-egg.png",
-    title: "Burger Smoke BBQxxxxxxxxxxxxxxxxxxxxxxx",
+    title: "Burger Smoke BBQ",
     price: 5.598,
     quantity: 0,
     isAvailable: true,

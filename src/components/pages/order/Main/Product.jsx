@@ -27,54 +27,53 @@ export default function Product({ title, imageSource, price }) {
 const ProductStyled = styled.div`
   .produit {
     background: ${theme.colors.white};
-    width: 240px;
-    height: 330px;
+    width: 200px;
+    height: 300px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px;
-    padding-bottom: 30px;
-    box-sizing: border-box;
+    padding-bottom: 10px;
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    border-radius: ${theme.borderRadius.extraRound};
 
-    .image {
+  .image {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    img {
       width: 100%;
-      height: auto;
-      margin-top: 30px;
-      margin-bottom: 20px;
-  
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
+      height: 100%;
+      object-fit: contain;
     }
   }
+
   .text-info {
     display: grid;
     grid-template-rows: 30% 70%;
-    padding: px;
-    font-size: ${theme.fonts.size.P4};
-    bottom: 10px;
-    font-weight: ${theme.fonts.weights.bold};
-    color: ${theme.colors.dark};
-    text-align: left;
-    width: 100%;
-    font-family: "Amatic SC", cursive;
+    padding: 5px;
 
     .title {
-      max-width: 200px;
-      height:50px;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      margin: auto 0;
+      font-size: ${theme.fonts.size.P4};
+      position: relative;
+      bottom: 10px;
+      font-weight: ${theme.fonts.weights.bold};
+      color: ${theme.colors.dark};
+      text-align: left;
       white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      font-family: "Amatic SC", cursive;
     }
+
 
     .description {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 20px; 
 
-      
       .left-description {
         display: flex;
         justify-content: flex-start;
@@ -83,6 +82,7 @@ const ProductStyled = styled.div`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: ${theme.fonts.weights.medium};
         color: ${theme.colors.primary};
       }
 
@@ -91,11 +91,14 @@ const ProductStyled = styled.div`
         justify-content: flex-end;
         align-items: center;
         font-size: ${theme.fonts.size.P1};
-      }
 
-      .primary-button {
-        
+        .primary-button {
+          font-size: ${theme.fonts.size.XS};
+          cursor: pointer;
+          padding: 12px;
+        }
       }
     }
   }
+}
 `;
