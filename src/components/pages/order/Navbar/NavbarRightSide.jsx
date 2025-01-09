@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import styled from "styled-components";
 import Profile from "./Profile";
 
