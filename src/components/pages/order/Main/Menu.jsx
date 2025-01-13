@@ -4,9 +4,11 @@ import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import { theme } from "../../../../themes";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths";
+import AdminContext from "../../../../context/AdminContext";
 
 export default function Menu() {
   const [menu, setMenu] = useState(fakeMenu2);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
 
   return (
     <MenuStyled>
