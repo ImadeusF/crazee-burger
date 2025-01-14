@@ -33,7 +33,8 @@ const fonts = {
     XXXS: "8px",
     XXS: "10px",
     XS: "12px",
-    P0: "15px",
+    SM: "15px",
+    P0: "16px",
     P1: "18px",
     P2: "20px",
     P3: "24px",
@@ -57,7 +58,12 @@ const borderRadius = {
   extraRound: "15px",
   circle: "50%",
 };
-const shadows = {};
+
+const shadows = {
+  subtle: "0px -6px 8px -2px rgba(0, 0, 0, 0.1)",
+  medium: "-8px 8px 20px 0px rgb(0 0 0 / 20%)",
+  strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
+}
 
 export const theme = {
   colors,

@@ -3,19 +3,38 @@ import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
-
+import { useState } from "react";
+import OrderContext from "../../../context/OrderContext";
 
 export default function OrderPage() {
-  const { username } = useParams(); //paramètres de l'url
-  // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isAddSelected, setIsAddSelected] = useState(true);
+  const [isEditSelected, setIsEditSelected] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected]= useState("add");
+
+  const orderContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    isAddSelected,
+    setIsAddSelected,
+    isEditSelected,
+    setIsEditSelected,
+    currentTabSelected,
+    setCurrentTabSelected,
+  };
 
   return (
-    <OrderPageStyle>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-      </div>
-    </OrderPageStyle>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyle>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyle>
+    </OrderContext.Provider>
   );
 }
 
