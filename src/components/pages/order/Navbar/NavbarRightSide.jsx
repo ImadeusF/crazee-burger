@@ -9,7 +9,7 @@ import ToastAdmin from "./ToastAdmin";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function NavbarRightSide() {
-  const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -23,14 +23,14 @@ export default function NavbarRightSide() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      })
+      });
     }
     setIsModeAdmin(!isModeAdmin);
   };
   return (
     <NavbarRightSideStyled>
       <ToggleButton
-      isChecked={isModeAdmin}
+        isChecked={isModeAdmin}
         onToggle={displayToastNotification}
         labelIfChecked="Mode admin activé"
         labelIfUnchecked="Mode admin désactivé"
