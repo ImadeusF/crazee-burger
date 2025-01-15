@@ -8,13 +8,14 @@ export default function AddForm() {
         <input type="text" placeholder="Nom" />
         <input type="text" placeholder="Image URL" />
         <input type="text" placeholder="Prix" />
-        </div>
-      <div className="submit-button">submit-button</div>
+      </div>
+      <button className="submit-button">Submit button</button>
     </AddFormStyled>
   );
 }
 
 const AddFormStyled = styled.form`
+  border: 2px solid black;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
@@ -26,8 +27,6 @@ const AddFormStyled = styled.form`
 
   height: 100%;
   width: 70%;
-  border:2px solid black;
-  margin: 20px;
 
   .image-preview {
     grid-area: image-preview;
@@ -37,7 +36,7 @@ const AddFormStyled = styled.form`
   .input-fields {
     grid-area: input-fields;
     background: blue;
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
   }
@@ -45,9 +44,6 @@ const AddFormStyled = styled.form`
   .submit-button {
     grid-area: submit-button;
     background: green;
-  }
-
-  p {
-    padding: 40px;
+    width: 50%;
   }
 `;
