@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
