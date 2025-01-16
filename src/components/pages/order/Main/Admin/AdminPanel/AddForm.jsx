@@ -5,9 +5,9 @@ import { MdOutlineSignalWifiStatusbarConnectedNoInternet4 } from "react-icons/md
 
 const EMPTY_PRODUCT = {
   id: 0,
-  title: "Nouveau produit",
+  title: "",
   imageSource: "",
-  price: 14,
+  price: 0,
 };
 
 export default function AddForm() {
@@ -37,14 +37,14 @@ export default function AddForm() {
           name="title"
           value={newProduct.title}
           type="text"
-          placeholder="Nom"
+          placeholder="Nom du produit (ex: Super Burger)"
           onChange={handleChange}
         />
         <input
           name="imageSource"
           value={newProduct.imageSource}
           type="text"
-          placeholder="Image URL"
+          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
         />
         <input
