@@ -1,13 +1,59 @@
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
+import { MdOutlineSignalWifiStatusbarConnectedNoInternet4 } from "react-icons/md";
+
+const EMPTY_PRODUCT = {
+  id: 0,
+  title: "Nouveau produit",
+  imageSource: "",
+  price: 14,
+};
 
 export default function AddForm() {
+  const { handleAdd } = useContext(OrderContext);
+
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newProductToAdd={
+      ...newProduct,
+    id: crypto.randomUUID(),
+  }
+    handleAdd(newProductToAdd);
+  };
+
+  const handleChange = (e) => {
+    setNewProduct({...newProduct, [e.target.name]: e.target.value});
+  }
+
   return (
-    <AddFormStyled>
-      <div className="image-preview">image-preview</div>
+    <AddFormStyled onSubmit={handleSubmit}>
+      <div className="image-preview">Aucune image</div>
       <div className="input-fields">
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Image URL" />
-        <input type="text" placeholder="Prix" />
+        <input
+          name="title"
+          value={newProduct.title}
+          type="text"
+          placeholder="Nom"
+          onChange={handleChange}
+        />
+        <input
+          name="imageSource"
+          value={newProduct.imageSource}
+          type="text"
+          placeholder="Image URL"
+          onChange={handleChange}
+        />
+        <input
+          name = "price"
+          value={newProduct.price ? newProduct.price : ""}
+          type="text"
+          placeholder="Prix"
+          onChange={handleChange}
+        />
       </div>
       <button className="submit-button">Submit button</button>
     </AddFormStyled>
