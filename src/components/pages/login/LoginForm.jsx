@@ -35,6 +35,7 @@ export default function LoginForm() {
         placeholder={"Entrez votre prénom"}
         required
         Icon={<BsPersonCircle />}  
+        className={"input-login"}
         />
         <PrimaryButton
         label={"Accéder à votre espace"}
@@ -68,5 +69,9 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
     margin: 20px 10px 10px;
     font-size: ${theme.fonts.size.P4};
+  }
+
+  .input-login {
+    margin: 18px 0; //must be handled in parent
   }
 `
