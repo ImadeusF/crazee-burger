@@ -1,37 +1,68 @@
 import styled from "styled-components";
 import { theme } from "../../themes";
 import PrimaryButton from "./PrimaryButton";
-import { formatPrice } from "../../utils/maths";
+import { TiDelete } from "react-icons/ti";
 
 export default function Card({ title, imageSource, leftDescription }) {
   return (
     <CardStyled className="produit">
-        <div className="image">
-          <img src={imageSource} alt={title} />
-        </div>
-        <div className="text-info">
-          <div className="title">{title}</div>
-          <div className="description">
-            <div className="left-description">{leftDescription}</div>
-            <div className="right-description">
-              <PrimaryButton className="primary-button" label={"Ajouter"} />
-            </div>
+      <button className="delete-button" aria-label="delete-button">
+        <TiDelete className="icon"/>
+      </button>
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="text-info">
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="left-description">{leftDescription}</div>
+          <div className="right-description">
+            <PrimaryButton className="primary-button" label={"Ajouter"} />
           </div>
         </div>
+      </div>
     </CardStyled>
   );
 }
 
 const CardStyled = styled.div`
-    background: ${theme.colors.white};
-    width: 200px;
-    height: 300px;
-    display: grid;
-    grid-template-rows: 65% 1fr;
-    padding: 20px;
-    padding-bottom: 10px;
-    box-shadow: ${theme.shadows.medium};
-    border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
+  background: ${theme.colors.white};
+  width: 200px;
+  height: 300px;
+  display: grid;
+  grid-template-rows: 65% 1fr;
+  padding: 20px;
+  padding-bottom: 10px;
+  box-shadow: ${theme.shadows.medium};
+  border-radius: ${theme.borderRadius.extraRound};
+
+  .delete-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: ${theme.colors.primary};
+    z-index: 2;
+    padding: 0;
+    border: none;
+    background: none;
+
+    .icon {
+      width:100%;
+      height:100%;
+    }
+
+    :hover {
+      color: ${theme.colors.red};
+    }
+
+    :active {
+      color: ${theme.colors.primary};
+    }
+  }
 
   .image {
     width: 100%;
@@ -65,7 +96,6 @@ const CardStyled = styled.div`
       text-overflow: ellipsis;
       font-family: "Amatic SC", cursive;
     }
-
 
     .description {
       display: grid;
