@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import { MdOutlineSignalWifiStatusbarConnectedNoInternet4 } from "react-icons/md";
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   id: 0,
@@ -14,6 +14,7 @@ export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +25,15 @@ export default function AddForm() {
     };
     handleAdd(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccessMessage();
+  };
+
+  const displaySuccessMessage = () => {
+    setIsSubmited(true);
+    setTimeout(() => {
+      setIsSubmited(false);
+    }, 2000);
   };
 
   const handleChange = (e) => {
@@ -62,7 +72,15 @@ export default function AddForm() {
           onChange={handleChange}
         />
       </div>
-      <button className="submit-button">Submit button</button>
+      <div className="submit">
+        <button className="submit-button">Submit button</button>
+        {isSubmited && (
+          <div className="submit-message">
+            <FiCheck />
+            <span>Ajouté avec succès</span>
+          </div>
+        )}
+      </div>
     </AddFormStyled>
   );
 }
@@ -83,13 +101,13 @@ const AddFormStyled = styled.form`
 
   .image-preview {
     grid-area: image-preview;
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
     img {
       width: 100%;
-      height:100%;
+      height: 100%;
       object-fit: contain;
       object-position: center;
     }
@@ -103,9 +121,18 @@ const AddFormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
   }
 
-  .submit-button {
+  .submit {
     grid-area: submit-button;
-    background: green;
-    width: 50%;
+    display:flex;
+    align-items: center;
+
+    .submit-button {
+      width: 50%;
+    }
+
+    .submit-message {
+      width: 50%;
+      padding-left:20px;
+    }
   }
 `;
