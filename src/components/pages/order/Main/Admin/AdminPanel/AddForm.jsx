@@ -18,20 +18,26 @@ export default function AddForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newProductToAdd={
+    const newProductToAdd = {
       ...newProduct,
-    id: crypto.randomUUID(),
-  }
+      id: crypto.randomUUID(),
+    };
     handleAdd(newProductToAdd);
   };
 
   const handleChange = (e) => {
-    setNewProduct({...newProduct, [e.target.name]: e.target.value});
-  }
+    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+  };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">Aucune image</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
+        ) : (
+          <div>Aucune image</div>
+        )}
+      </div>
       <div className="input-fields">
         <input
           name="title"
@@ -48,7 +54,7 @@ export default function AddForm() {
           onChange={handleChange}
         />
         <input
-          name = "price"
+          name="price"
           value={newProduct.price ? newProduct.price : ""}
           type="text"
           placeholder="Prix"
@@ -76,7 +82,16 @@ const AddFormStyled = styled.form`
 
   .image-preview {
     grid-area: image-preview;
-    background: red;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height:100%;
+      object-fit: contain;
+      object-position: center;
+    }
   }
 
   .input-fields {
