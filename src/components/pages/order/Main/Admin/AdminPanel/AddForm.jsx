@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
+import { theme } from "../../../../../../themes";
 
 const EMPTY_PRODUCT = {
   id: 0,
@@ -46,7 +47,7 @@ export default function AddForm() {
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
-          <div>Aucune image</div>
+          <div className="empty-image">Aucune image</div>
         )}
       </div>
       <div className="input-fields">
@@ -86,7 +87,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 2px solid black;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
@@ -98,6 +98,8 @@ const AddFormStyled = styled.form`
 
   height: 100%;
   width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
     grid-area: image-preview;
@@ -105,25 +107,39 @@ const AddFormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: center;
     }
+
+    .empty-image {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid ${theme.colors.greylight};
+      line-height: 1.5;
+      color: ${theme.colors.greySemiDark};
+      border-radius: ${theme.borderRadius.round};
+    }
   }
 
   .input-fields {
     grid-area: input-fields;
-    background: blue;
+
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
+    /* grid-row-gap: 8px; */
   }
 
   .submit {
     grid-area: submit-button;
-    display:flex;
+    display: flex;
     align-items: center;
 
     .submit-button {
@@ -132,7 +148,7 @@ const AddFormStyled = styled.form`
 
     .submit-message {
       width: 50%;
-      padding-left:20px;
+      padding-left: 20px;
     }
   }
 `;
