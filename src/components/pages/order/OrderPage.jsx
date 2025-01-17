@@ -1,29 +1,49 @@
-import { useParams } from "react-router";
 import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isAddSelected, setIsAddSelected] = useState(true);
-  const [isEditSelected, setIsEditSelected] = useState(false);
   const [currentTabSelected, setCurrentTabSelected]= useState("add");
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  
+  const handleAdd = (newProduct) => {
+    const menuCopy = [...menu];
+    const menuUpdated = [newProduct, ...menuCopy]
+    setMenu(menuUpdated);
+  }
+
+  const handleDelete = (idOfProductToDelete) => {
+    const menuCopy = [...menu];
+    const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete);
+    setMenu(menuUpdated);
+  }
+
+  const resetMenu = () => {
+    setMenu(fakeMenu.MEDIUM);
+  }
 
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setIsAddSelected,
-    isEditSelected,
-    setIsEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
+    menu,
+    setMenu,
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   return (

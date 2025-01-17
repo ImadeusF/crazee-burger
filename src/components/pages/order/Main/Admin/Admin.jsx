@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AdminTabs from "./AdminTabs";
-import AdminPanel from "./AdminPanel";
+import AdminPanel from "./AdminPanel/AdminPanel";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
@@ -19,4 +19,5 @@ const AdminStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 `;
