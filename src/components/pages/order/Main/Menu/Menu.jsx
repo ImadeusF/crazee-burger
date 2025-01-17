@@ -28,7 +28,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => {
-              handleDelete(id);
+            handleDelete(id);
             }}
           />
         );
