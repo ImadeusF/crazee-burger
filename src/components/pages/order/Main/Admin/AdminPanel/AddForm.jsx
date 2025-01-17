@@ -107,7 +107,7 @@ const AddFormStyled = styled.form`
     top: 3px;
 
     .submit-button {
-      width: 50%;
+      height:100%;
     }
   }
 `;
