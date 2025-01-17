@@ -17,7 +17,7 @@ PR 10 : To do
 
 PR 9 : To do
 
-PR 8 : F08 : Créer le panel Admin (ajout et suppression d'un nouveau produit) : Work in progress
+PR 8 : F08 : Créer le panel Admin (ajout et suppression d'un nouveau produit) : https://crazee-burger-cxmjmdd39-imadeus-projects.vercel.app/
 
 PR 7 : F07 - Créer le panel Admin (affichage du panel avec ses onglets): https://crazee-burger-6a91ebp1t-imadeus-projects.vercel.app/
 
