@@ -8,7 +8,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected]= useState("add");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
@@ -27,7 +27,7 @@ export default function OrderPage() {
   }
 
   const resetMenu = () => {
-    setMenu(fakeMenu.SMALL);
+    setMenu(fakeMenu.MEDIUM);
   }
 
   const orderContextValue = {

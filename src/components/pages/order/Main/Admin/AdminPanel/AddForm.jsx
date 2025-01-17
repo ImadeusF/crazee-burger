@@ -2,12 +2,10 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
-import { FaHamburger } from "react-icons/fa";
-import { MdOutlineEuro } from "react-icons/md";
-import { BsFillCameraFill } from "react-icons/bs";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./inputTextsConfig";
 
 export const EMPTY_PRODUCT = {
   id: 0,
@@ -33,6 +31,10 @@ export default function AddForm() {
     displaySuccessMessage();
   };
 
+  const handleChange = (e) => {
+    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+  };
+  
   const displaySuccessMessage = () => {
     setIsSubmited(true);
     setTimeout(() => {
@@ -40,51 +42,35 @@ export default function AddForm() {
     }, 2000);
   };
 
-  const handleChange = (e) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
-  };
+  const inputTexts = getInputTextsConfig(newProduct);
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-     <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="input-fields">
-        <TextInput
-          name="title"
-          value={newProduct.title}
-          type="text"
-          placeholder="Nom du produit (ex: Super Burger)"
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          version={"minimalist"}
-        />
-        <TextInput
-          name="imageSource"
-          value={newProduct.imageSource}
-          type="text"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          version={"minimalist"}
-        />
-        <TextInput
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          version={"minimalist"}
-        />
+        {inputTexts.map((inputText) => (
+          <TextInput
+            name={inputText.name}
+            value={inputText.value}
+            placeholder={inputText.placeholder}
+            Icon={inputText.Icon}
+            // ou {...inputText} à la place des 4 lignes ci-dessus
+            key={inputText.id}
+            onChange={handleChange}
+            version={"minimalist"}
+          />
+        ))}
       </div>
       <div className="submit">
-        <Button 
-        className="submit-button"
-        label={"Ajouter un nouveau produit au menu"}
-        version={"success"}
-         />
-        {isSubmited && (
-          <SubmitMessage />
-        )}
+        <Button
+          className="submit-button"
+          label={"Ajouter un nouveau produit au menu"}
+          version={"success"}
+        />
+        {isSubmited && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -110,15 +96,15 @@ const AddFormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
-    grid-row-gap: 8px; 
+    grid-row-gap: 8px;
   }
 
   .submit {
     grid-area: submit-button;
     display: flex;
     align-items: center;
-    position:relative;
-    top:3px;
+    position: relative;
+    top: 3px;
 
     .submit-button {
       width: 50%;
