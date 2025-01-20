@@ -17,20 +17,29 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
   const handleAdd = (newProduct) => {
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     const menuUpdated = [newProduct, ...menuCopy]
     setMenu(menuUpdated);
   }
 
   const handleDelete = (idOfProductToDelete) => {
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete);
     setMenu(menuUpdated);
+  }
+  
+  const handleEdit = (productBeingEdited) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id);  
+    menuCopy[indexOfProductToEdit] = productBeingEdited;
+    setMenu(menuCopy);
   }
 
   const resetMenu = () => {
     setMenu(fakeMenu.MEDIUM);
   }
+
+
 
   const orderContextValue = {
     isModeAdmin,
@@ -48,6 +57,7 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,  
     setProductSelected,
+    handleEdit
   };
 
   return (

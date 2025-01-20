@@ -6,16 +6,18 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextsConfig";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-import { FaNfcSymbol } from "react-icons/fa6";
 
 export default function EditForm() {
-  const { productSelected } = useContext(OrderContext);
+  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext);
 const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT); //STATE INTERNE A EDITFORM
 
   const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (e) => {
-    setProductBeingEdited({ ...productBeingEdited, [e.target.name]: e.target.value });
+    //On modifie le state interne de EditForm
+    const productBeingUpdated = { ...productSelected, [e.target.name]: e.target.value };
+    setProductSelected(productBeingUpdated); //Cette ligne update le formulaire
+    handleEdit(productBeingUpdated); //Cette ligne édite le menu
   };
 
   return (
