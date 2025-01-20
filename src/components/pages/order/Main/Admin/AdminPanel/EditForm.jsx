@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import HintMessage from "./HintMessage";
 
 export default function EditForm() {
     return (
       <EditFormStyled>
-        EditForm
+       <HintMessage />
       </EditFormStyled>
     )
   }
