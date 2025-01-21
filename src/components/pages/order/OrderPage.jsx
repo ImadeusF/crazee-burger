@@ -9,9 +9,9 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected]= useState("edit");
+  const [currentTabSelected, setCurrentTabSelected]= useState("add");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
