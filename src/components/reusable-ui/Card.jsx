@@ -11,10 +11,11 @@ export default function Card({
   onDelete,
   onClick,
   isHoverable,
+  isSelected,
 }) {
   return (
-    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
-      <div className="card">
+    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} >
+      <div className="card" style={ isSelected ? { background: "orange"} : {}}>
         {hasDeleteButton && (
           <button
             className="delete-button"
@@ -42,7 +43,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${(props) => props.isHoverable && hoverableStyled}
+  ${(props) => props.isHoverable && hoverableStyle}
 
   .card {
     position: relative;
@@ -150,7 +151,7 @@ const CardStyled = styled.div`
   }
 `;
 
-const hoverableStyled = css`
+const hoverableStyle = css`
   &:hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
