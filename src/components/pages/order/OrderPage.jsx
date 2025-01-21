@@ -39,8 +39,6 @@ export default function OrderPage() {
     setMenu(fakeMenu.MEDIUM);
   }
 
-
-
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
