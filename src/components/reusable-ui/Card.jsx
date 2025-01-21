@@ -14,7 +14,12 @@ export default function Card({
   isSelected,
 }) {
   return (
-    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+    <CardStyled
+      className="produit"
+      onClick={onClick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}
+    >
       <div className="card">
         {hasDeleteButton && (
           <button
@@ -33,7 +38,7 @@ export default function Card({
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} />
+              <Button className="primary-button" label={"Ajouter"} onClick={(e) => e.stopPropagation()}/>
             </div>
           </div>
         </div>
@@ -43,7 +48,9 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({isHoverable}) => isHoverable && hoverableStyle}
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
+  width: 240px;
+  height: 330px;
 
   .card {
     position: relative;
@@ -76,11 +83,11 @@ const CardStyled = styled.div`
         height: 100%;
       }
 
-      :hover {
+      &:hover {
         color: ${theme.colors.red};
       }
 
-      :active {
+      &:active {
         color: ${theme.colors.primary};
       }
     }
@@ -148,7 +155,8 @@ const CardStyled = styled.div`
         }
       }
     }
-    ${({isHoverable, isSelected})=> isHoverable && isSelected && selectedStyle}
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `;
 
@@ -171,14 +179,14 @@ const selectedStyle = css`
     border: 1px solid ${theme.colors.white};
     transition: all 20ms ease-out;
 
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
       transition: all 20ms ease-out;
     }
 
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
@@ -194,13 +202,13 @@ const selectedStyle = css`
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
 
-      :hover {
+      &:hover {
         color: ${theme.colors.white};
         background-color: ${theme.colors.primary};
         border: 1px solid ${theme.colors.white};
       }
 
-      :active {
+      &:active {
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
       }
@@ -210,7 +218,7 @@ const selectedStyle = css`
   .delete-button {
     color: ${theme.colors.white};
 
-    :active {
+    &:active {
       color: ${theme.colors.white};
     }
   }
