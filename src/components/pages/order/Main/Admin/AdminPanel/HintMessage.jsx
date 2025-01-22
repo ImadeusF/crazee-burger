@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../themes";
+import { HiCursorClick } from "react-icons/hi";
 
 export default function HintMessage() {
   return (
     <HintMessageStyled>
       <span>Cliquez sur un produit pour le modifier</span>
+      <HiCursorClick />
     </HintMessageStyled>
   );
 }

@@ -22,8 +22,6 @@ export default function EditForm() {
 
   return (
     <EditFormStyled>
-      {/* <HintMessage />
-       <span>Produit : {productSelected && productSelected.title}</span> */}
       <ImagePreview
         imageSource={productSelected.imageSource}
         title={productSelected.title}
