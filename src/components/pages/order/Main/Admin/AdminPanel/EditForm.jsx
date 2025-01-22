@@ -6,13 +6,16 @@ import { getInputTextsConfig } from "./inputTextsConfig";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
 export default function EditForm() {
-  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext);
-
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
+    useContext(OrderContext); 
   const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (e) => {
     //On modifie le state interne de EditForm
-    const productBeingUpdated = { ...productSelected, [e.target.name]: e.target.value };
+    const productBeingUpdated = {
+      ...productSelected,
+      [e.target.name]: e.target.value,
+    };
     setProductSelected(productBeingUpdated); //Cette ligne update le formulaire
     handleEdit(productBeingUpdated); //Cette ligne édite le menu
   };
@@ -21,13 +24,12 @@ export default function EditForm() {
     <EditFormStyled>
       {/* <HintMessage />
        <span>Produit : {productSelected && productSelected.title}</span> */}
-
       <ImagePreview
         imageSource={productSelected.imageSource}
         title={productSelected.title}
       />
       <div className="input-fields">
-      {inputTexts.map((inputText) => (
+        {inputTexts.map((inputText) => (
           <TextInput
             name={inputText.name}
             value={inputText.value}
@@ -37,11 +39,11 @@ export default function EditForm() {
             key={inputText.id}
             onChange={handleChange}
             version={"minimalist"}
+            ref={inputText.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>
-      <div className="submit">
-      </div>
+      <div className="submit"></div>
     </EditFormStyled>
   );
 }
