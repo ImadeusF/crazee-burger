@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
-import ImagePreview from "./ImagePreview";
-import { getInputTextsConfig } from "./inputTextsConfig";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import { theme } from "../../../../../../themes";
+import Form from "./Form";
 import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } =
     useContext(OrderContext);
-  const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (e) => {
     //On modifie le state interne de EditForm
@@ -23,30 +19,38 @@ export default function EditForm() {
   };
 
   return (
-    <EditFormStyled>
-      <ImagePreview
-        imageSource={productSelected.imageSource}
-        title={productSelected.title}
+    // <EditFormStyled>
+    //   <ImagePreview
+    //     imageSource={productSelected.imageSource}
+    //     title={productSelected.title}
+    //   />
+    //   <div className="input-fields">
+    //     {inputTexts.map((inputText) => (
+    //       <TextInput
+    //         name={inputText.name}
+    //         value={inputText.value}
+    //         placeholder={inputText.placeholder}
+    //         Icon={inputText.Icon}
+    //         // ou {...inputText} à la place des 4 lignes ci-dessus
+    //         key={inputText.id}
+    //         onChange={handleChange}
+    //         version={"minimalist"}
+    //         ref={inputText.name === "title" ? titleEditRef : null}
+    //       />
+    //     ))}
+    //   </div>
+    //   <div className="submit">
+    //     <EditInfoMessage />
+    //   </div>
+    // </EditFormStyled>
+    
+      <Form
+        product={productSelected}
+        onChange={handleChange}
+        ref={titleEditRef}
+        QUELQUECHOSE={ <EditInfoMessage /> }
       />
-      <div className="input-fields">
-        {inputTexts.map((inputText) => (
-          <TextInput
-            name={inputText.name}
-            value={inputText.value}
-            placeholder={inputText.placeholder}
-            Icon={inputText.Icon}
-            // ou {...inputText} à la place des 4 lignes ci-dessus
-            key={inputText.id}
-            onChange={handleChange}
-            version={"minimalist"}
-            ref={inputText.name === "title" ? titleEditRef : null}
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <EditInfoMessage />
-      </div>
-    </EditFormStyled>
+    
   );
 }
 

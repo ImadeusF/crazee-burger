@@ -1,46 +1,39 @@
-import { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import TextInput from "../../../../../reusable-ui/TextInput";
-import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
 import { getInputTextsConfig } from "./inputTextsConfig";
 
-export default function Form({product, onSubmit, onChange, isSubmited}) {
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, isSubmited, QUELQUECHOSE }, ref) => {
+    const inputTexts = getInputTextsConfig(product);
 
-  const inputTexts = getInputTextsConfig(product);
+    return (
+      <FormStyled onSubmit={onSubmit}>
+        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <div className="input-fields">
+          {inputTexts.map((inputText) => (
+            <TextInput
+              name={inputText.name}
+              value={inputText.value}
+              placeholder={inputText.placeholder}
+              Icon={inputText.Icon}
+              // ou {...inputText} à la place des 4 lignes ci-dessus
+              key={inputText.id}
+              onChange={onChange}
+              version={"minimalist"}
+              ref={ref && inputText.name === "title" ? ref : null}
+            />
+          ))}
+        </div>
+       
+        <div className="submit">{QUELQUECHOSE}</div>
+      </FormStyled>
+    );
+  }
+);
 
-  return (
-    <FormStyled onSubmit={onSubmit}>
-      <ImagePreview
-        imageSource={product.imageSource}
-        title={product.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((inputText) => (
-          <TextInput
-            name={inputText.name}
-            value={inputText.value}
-            placeholder={inputText.placeholder}
-            Icon={inputText.Icon}
-            // ou {...inputText} à la place des 4 lignes ci-dessus
-            key={inputText.id}
-            onChange={onChange}
-            version={"minimalist"}
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version={"success"}
-        />
-        {isSubmited && <SubmitMessage />}
-      </div>
-    </FormStyled>
-  );
-}
+export default Form;
 
 const FormStyled = styled.form`
   display: grid;
@@ -73,7 +66,7 @@ const FormStyled = styled.form`
     top: 3px;
 
     .submit-button {
-      height:100%;
+      height: 100%;
     }
   }
 `;
