@@ -14,9 +14,9 @@ PR 12 : To do
 
 PR 11 : To do
 
-PR 10 : To do
+PR 10 : Créer le panier (vide) : Work in progress
 
-PR 9 : F09 : Créer le panel Admin : Work in progress
+PR 9 : F09 : Créer le panel Admin : https://crazee-burger-7awi5dhk4-imadeus-projects.vercel.app/
 
 PR 8 : F08 : Créer le panel Admin (ajout et suppression d'un nouveau produit) : https://crazee-burger-cxmjmdd39-imadeus-projects.vercel.app/
 
