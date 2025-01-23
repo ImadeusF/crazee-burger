@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../themes";
 import Card from "../../../../reusable-ui/Card";
@@ -6,17 +6,48 @@ import { formatPrice } from "../../../../../utils/maths";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsSelected } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
+
+ 
+
+  const handleClick = async (idProductSelected) => {
+    if (!isModeAdmin) return;
+
+    setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find((product) => product.id === idProductSelected);
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
 
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
+  const handleCardDelete = (e, idProductToDelete) => {
+    e.stopPropagation(); // pour que la card active reste active
+    handleDelete(idProductToDelete);
+    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
+  };
+
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => {
@@ -27,9 +58,10 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => {
-            handleDelete(id);
-            }}
+            onDelete={(e) => handleCardDelete(e, id)}
+            onClick={() => handleClick(id)}
+            $isHoverable={isModeAdmin}
+            $isSelected={checkIfProductIsSelected(id, productSelected.id)}
           />
         );
       })}

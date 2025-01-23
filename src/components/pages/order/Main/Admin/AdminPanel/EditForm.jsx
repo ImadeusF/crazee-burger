@@ -1,13 +1,25 @@
-import styled from "styled-components"
+import { useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext";
+import Form from "./Form";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
-    return (
-      <EditFormStyled>
-        EditForm
-      </EditFormStyled>
-    )
-  }
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
+    useContext(OrderContext);
 
-  const EditFormStyled = styled.div`
+  const handleChange = (e) => {
+    //On modifie le state interne de EditForm
+    const productBeingUpdated = {
+      ...productSelected,
+      [e.target.name]: e.target.value,
+    };
+    setProductSelected(productBeingUpdated); //Cette ligne update le formulaire
+    handleEdit(productBeingUpdated); //Cette ligne édite le menu
+  };
 
-  `;
+  return (
+    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage />
+    </Form>
+  );
+}
