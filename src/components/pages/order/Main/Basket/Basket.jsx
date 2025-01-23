@@ -8,11 +8,9 @@ import { formatPrice } from "../../../../../utils/maths";
 export default function Basket() {
   return (
     <BasketStyled>
-        <Total amountToPay={formatPrice(0)}/>
+      <Total amountToPay={formatPrice(0)} />
       <div className="body">Body</div>
-      <Header>
-        <Footer />
-      </Header>
+      <Footer />
     </BasketStyled>
   );
 }

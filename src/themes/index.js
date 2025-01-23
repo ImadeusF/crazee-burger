@@ -51,7 +51,7 @@ const fonts = {
     heavy: 800,
   },
   family: {
-    stylish: `"Amatic Sc", cursive`,
+    stylish: '"Amatic Sc", cursive',
   },
 };
 const gridUnit = 8;
