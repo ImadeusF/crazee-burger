@@ -60,8 +60,8 @@ export default function Menu() {
             hasDeleteButton={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
             onClick={() => handleClick(id)}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsSelected(id, productSelected.id)}
+            $isHoverable={isModeAdmin}
+            $isSelected={checkIfProductIsSelected(id, productSelected.id)}
           />
         );
       })}

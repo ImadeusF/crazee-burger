@@ -5,7 +5,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextsConfig";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, isSubmited, QUELQUECHOSE }, ref) => {
+  ({ product, onSubmit, onChange, children }, ref) => {
     const inputTexts = getInputTextsConfig(product);
 
     return (
@@ -26,8 +26,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-       
-        <div className="submit">{QUELQUECHOSE}</div>
+        <div className="form-footer">{children}</div>
       </FormStyled>
     );
   }
@@ -58,15 +57,11 @@ const FormStyled = styled.form`
     grid-row-gap: 8px;
   }
 
-  .submit {
+  .form-footer {
     grid-area: submit-button;
     display: flex;
     align-items: center;
     position: relative;
     top: 3px;
-
-    .submit-button {
-      height: 100%;
-    }
   }
 `;
