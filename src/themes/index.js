@@ -51,7 +51,7 @@ const fonts = {
     heavy: 800,
   },
   family: {
-    stylish: `"Amatic Sc", cursive`,
+    stylish: '"Amatic Sc", cursive',
   },
 };
 const gridUnit = 8;
@@ -67,6 +67,7 @@ const shadows = {
   medium: "-8px 8px 20px 0px rgb(0 0 0 / 20%)",
   strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
   orangeHighlight: "0 0 8px 0 rgb(255 154 35 / 100%)",
+  basket: "0px 0px 20px 0px rgba(0, 0, 0, 0.2) inset",
 };
 
 export const theme = {
