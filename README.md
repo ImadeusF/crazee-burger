@@ -12,9 +12,9 @@ PR 13 : To do
 
 PR 12 : To do
 
-PR 11 : To do
+PR 11 : Work in progress
 
-PR 10 : Créer le panier (vide) : Work in progress
+PR 10 : Créer le panier (vide) : https://crazee-burger-i3q8fw0qn-imadeus-projects.vercel.app/
 
 PR 9 : F09 : Créer le panel Admin : https://crazee-burger-7awi5dhk4-imadeus-projects.vercel.app/
 
