@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
-import { deepClone, find } from "../utils/array";
+import { deepClone, find, findIndex } from "../utils/array";
 import { BiBasket } from "react-icons/bi";
 
 export const useBasket = () => {
@@ -8,27 +8,34 @@ export const useBasket = () => {
 
   const handleAddToBasket = (productToAdd) => {
     const basketCopy = deepClone(basket);
-
     const isProductAlreadyInBasket =
       find(productToAdd.id, basketCopy) !== undefined; //undefined permet de renvoyer true ou false
 
     if (!isProductAlreadyInBasket) {
-      const newBastketProduct = {
-        ...productToAdd,
-        quantity: 1,
-      };
-      const basketUpdated = [...basketCopy, newBastketProduct];
-
-      setBasket(basketUpdated);
-    } else {
-      const indexOfBasketPorductToIncrement = basket.findIndex((basketProduct) => basketProduct.id === productToAdd.id);
-      basketCopy[indexOfBasketPorductToIncrement].quantity += 1;
-      setBasket(basketCopy);
+      createNewProductInBasket(productToAdd, basketCopy, setBasket);
+      return;
     }
+    incrementProductAlreadyInBasket(productToAdd,basketCopy);
   };
+  
+  const incrementProductAlreadyInBasket = (productToAdd,basketCopy) => {
+    const indexOfBasketPorductToIncrement = findIndex(productToAdd.id, basketCopy);
+    basketCopy[indexOfBasketPorductToIncrement].quantity += 1;
+    setBasket(basketCopy);
+  }
+
+  const createNewProductInBasket = (productToAdd, basketCopy, setBasket) => {
+    const newBastketProduct = {
+      ...productToAdd,
+      quantity: 1,
+    };
+    const basketUpdated = [newBastketProduct, ...basketCopy, ];
+    setBasket(basketUpdated);
+  }
 
   return {
     basket,
     handleAddToBasket,
   };
 };
+
