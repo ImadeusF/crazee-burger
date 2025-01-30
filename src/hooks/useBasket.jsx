@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
 import { deepClone, find } from "../utils/array";
+import { BiBasket } from "react-icons/bi";
 
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.SMALL);
@@ -10,7 +11,6 @@ export const useBasket = () => {
 
     const isProductAlreadyInBasket =
       find(productToAdd.id, basketCopy) !== undefined; //undefined permet de renvoyer true ou false
-    console.log("isProductAlreadyInBasket", isProductAlreadyInBasket);
 
     if (!isProductAlreadyInBasket) {
       const newBastketProduct = {
@@ -20,9 +20,11 @@ export const useBasket = () => {
       const basketUpdated = [...basketCopy, newBastketProduct];
 
       setBasket(basketUpdated);
+    } else {
+      const indexOfBasketPorductToIncrement = basket.findIndex((basketProduct) => basketProduct.id === productToAdd.id);
+      basketCopy[indexOfBasketPorductToIncrement].quantity += 1;
+      setBasket(basketCopy);
     }
-    
-
   };
 
   return {
