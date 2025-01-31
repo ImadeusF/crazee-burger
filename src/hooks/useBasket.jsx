@@ -4,7 +4,7 @@ import { deepClone, find, findIndex } from "../utils/array";
 import { BiBasket } from "react-icons/bi";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.SMALL);
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
   const handleAddToBasket = (productToAdd) => {
     const basketCopy = deepClone(basket);
