@@ -13,10 +13,7 @@ export default function BasketCard({
   onDelete,
 }) {
   return (
-    <BasketCardStyled
-      className={className}
-      $isModeAdmin={$isModeAdmin}
-    >
+    <BasketCardStyled className={className} $isModeAdmin={$isModeAdmin}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -137,12 +134,17 @@ const BasketCardStyled = styled.div`
         width: ${theme.fonts.size.P3};
         height: ${theme.fonts.size.P3};
       }
+      /* Behaviour on delete-button hover */
       &:hover {
         .icon {
           color: ${theme.colors.dark};
         }
+        &:active {
+          .icon {
+            color: ${theme.colors.white};
+          }
+        }
       }
-      /* Behaviour on delete-button hover */
     }
   }
 `;
