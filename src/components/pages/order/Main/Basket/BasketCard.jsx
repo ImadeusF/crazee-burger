@@ -108,7 +108,7 @@ const BasketCardStyled = styled.div`
   }
 
   &:hover {
-    .delete-button-pokemon {
+    .delete-button {
       border: none;
       box-sizing: border-box;
       position: absolute;
@@ -116,8 +116,8 @@ const BasketCardStyled = styled.div`
       right: 0;
       bottom: 0;
       width: 76px;
-      border-top-right-radius: ${theme.borderRadius.extraRound};
-      border-bottom-right-radius: ${theme.borderRadius.extraRound};
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
       padding: 10px;
       display: flex;
       align-items: center;
