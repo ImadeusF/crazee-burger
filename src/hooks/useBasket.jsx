@@ -13,7 +13,6 @@ export const useBasket = () => {
   const handleAddToBasket = (idProductToAdd) => {
     const basketCopy = deepClone(basket);
     const productAlreadyinBasket = findObjectById(idProductToAdd, basketCopy);
-    console.log(productAlreadyinBasket);
 
     if (productAlreadyinBasket) {
       incrementProductAlreadyInBasket(idProductToAdd, basketCopy);
