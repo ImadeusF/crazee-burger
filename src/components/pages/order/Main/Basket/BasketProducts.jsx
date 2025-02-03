@@ -15,8 +15,8 @@ export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasket
          <BasketCard 
          {...basketProduct} 
          imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON} 
-         $isModeAdmin={isModeAdmin}
          onDelete={() => handleOnDelete(basketProduct.id)}
+         $isClickable={isModeAdmin}
          />
        </div>
       ))}
