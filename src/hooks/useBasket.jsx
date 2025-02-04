@@ -37,7 +37,7 @@ export const useBasket = () => {
   }
 
   const handleDeleteBasketProduct = (idBasketProduct) => {
-    const basketCopy = deepClone(basket);
+    const basketCopy = deepClone(basket); //could be remove because removeObjectById already do a deepClone, if you remove, so use basket instead of basketCopy 
     const basketUpdated = removeObjectById(idBasketProduct, basketCopy);
     setBasket(basketUpdated);
   };
