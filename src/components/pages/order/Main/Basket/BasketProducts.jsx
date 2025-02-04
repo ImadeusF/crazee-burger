@@ -6,10 +6,11 @@ import OrderContext from "../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../utils/array";
 
 export default function BasketProducts() {
-const { basket, isModeAdmin, handleDeleteBasketProduct, menu } = useContext(OrderContext);
+const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected } = useContext(OrderContext);
 
 
-  const handleOnDelete = (id) => {
+  const handleOnDelete = (e, id) => {
+    e.stopPropagation();
     handleDeleteBasketProduct(id);
   }
 
@@ -23,8 +24,9 @@ const { basket, isModeAdmin, handleDeleteBasketProduct, menu } = useContext(Orde
          {...menuProduct} 
          imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON} 
          quantity={basketProduct.quantity}
-         onDelete={() => handleOnDelete(basketProduct.id)}
+         onDelete={(e) => handleOnDelete(e, basketProduct.id)}
          $isClickable={isModeAdmin}
+         onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
          />
        </div>
       )})}
