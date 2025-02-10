@@ -16,7 +16,15 @@ export const createUser = (userId) => {
   const docRef = doc(db, "users", userId);
   const newDoc = {
     username: userId,
-    menu: fakeMenu.LARGE, // quand on crée un utilisateur, c'est toujours le même menu qui est associé
+    menu: fakeMenu.SMALL, // quand on crée un utilisateur, c'est toujours le même menu qui est associé
   };
   setDoc(docRef, newDoc);
 };
+
+export const authenticateUser = async (userId) => {
+  const existingUser = await getUser(userId);
+  
+  if (!existingUser) {
+    createUser(userId);
+  }
+}

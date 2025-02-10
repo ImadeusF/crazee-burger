@@ -19,15 +19,13 @@ export default function OrderPage() {
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
 
-const handleProductSelected = async (idProductClicked) => {
+  const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
-      setIsCollapsed(false);
-      await setCurrentTabSelected("edit");
-      await setProductSelected(productClickedOn);
-      titleEditRef.current.focus();
-}
-
-
+    setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
 
   const orderContextValue = {
     isModeAdmin,
