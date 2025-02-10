@@ -6,7 +6,7 @@ import { theme } from "../../../../themes";
 export default function Profile() {
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
-
+  
   return (
     <ProfileStyled>
       <div className="info">
