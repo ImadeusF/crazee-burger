@@ -2,13 +2,14 @@ import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router";
+import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -17,7 +18,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
@@ -29,6 +30,15 @@ export default function OrderPage() {
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
   };
+
+  const initialiseMenu = async () => {
+    const menuReceived = await getMenu(username);
+    setMenu(menuReceived);
+  };
+
+  useEffect(() => {
+    initialiseMenu();
+  }, []);
 
   const orderContextValue = {
     username,
