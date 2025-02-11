@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router";
 import { getMenu } from "../../../api/product";
+import { getLocalStorage } from "../../../utils/window";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -19,7 +20,7 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
-  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
 
@@ -36,8 +37,17 @@ export default function OrderPage() {
     setMenu(menuReceived);
   };
 
+  const initialiseBasket = () => {
+    const basketReceived = getLocalStorage(username); //localStorage est synchrone, pas besoin de await
+    setBasket(basketReceived);
+  };
+
   useEffect(() => {
     initialiseMenu();
+  }, []);
+
+  useEffect(() => {
+    initialiseBasket();
   }, []);
 
   const orderContextValue = {
