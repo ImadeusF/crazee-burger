@@ -20,11 +20,12 @@ export const useMenu = () => {
       syncBothMenus(username, menuUpdated);
     }
     
-    const handleEdit = (productBeingEdited) => {
+    const handleEdit = (productBeingEdited, username) => {
       const menuCopy = deepClone(menu);
       const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id);  
       menuCopy[indexOfProductToEdit] = productBeingEdited;
       setMenu(menuCopy);
+      syncBothMenus(username, menuCopy);
     }
   
     const resetMenu = (username) => {
