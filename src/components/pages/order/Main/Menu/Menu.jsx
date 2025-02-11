@@ -34,7 +34,7 @@ export default function Menu() {
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation();
-    handleAddToBasket(idProductToAdd);
+    handleAddToBasket(idProductToAdd, username);
   };
 
   if(menu === undefined) return <Loader />;
