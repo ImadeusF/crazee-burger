@@ -41,7 +41,7 @@ export default function Menu() {
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={resetMenu} />;
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
   }
 
   return (
