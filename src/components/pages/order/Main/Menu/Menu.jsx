@@ -9,6 +9,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsSelected } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
@@ -35,6 +36,8 @@ export default function Menu() {
     e.stopPropagation();
     handleAddToBasket(idProductToAdd);
   };
+
+  if(menu === undefined) return <Loader />;
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
