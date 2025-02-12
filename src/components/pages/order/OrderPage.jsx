@@ -19,8 +19,10 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
+    useMenu();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
+    useBasket();
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
 
@@ -39,15 +41,16 @@ export default function OrderPage() {
 
   const initialiseBasket = () => {
     const basketReceived = getLocalStorage(username); //localStorage est synchrone, pas besoin de await
-    if(basketReceived) setBasket(basketReceived);
+    if (basketReceived) setBasket(basketReceived);
+  };
+
+  const initialiseUserSession = async () => {
+    await initialiseMenu();
+    initialiseBasket();
   };
 
   useEffect(() => {
-    initialiseMenu();
-  }, []);
-
-  useEffect(() => {
-    initialiseBasket();
+    initialiseUserSession();
   }, []);
 
   const orderContextValue = {
