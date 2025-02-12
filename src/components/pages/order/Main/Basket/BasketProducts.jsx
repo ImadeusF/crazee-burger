@@ -7,12 +7,20 @@ import { findObjectById } from "../../../../../utils/array";
 import { checkIfProductIsSelected } from "../Menu/helper";
 
 export default function BasketProducts() {
-const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } = useContext(OrderContext);
+const { 
+  username,
+  basket,
+  isModeAdmin,
+  handleDeleteBasketProduct,
+  menu,
+  handleProductSelected,
+  productSelected,
+ } = useContext(OrderContext);
 
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
-    handleDeleteBasketProduct(id);
+    handleDeleteBasketProduct(id, username);
   }
 
   return (

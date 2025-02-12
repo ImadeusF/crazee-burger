@@ -28,7 +28,7 @@ export default function Menu() {
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation(); // pour que la card active reste active
     handleDelete(idProductToDelete, username);
-    handleDeleteBasketProduct(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete, username);
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
   };
 
