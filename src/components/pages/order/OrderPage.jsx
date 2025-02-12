@@ -2,12 +2,14 @@ import { theme } from "../../../themes";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
+import { useParams } from "react-router";
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -16,20 +18,27 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
-  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
+    useMenu();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
+    useBasket();
+  const { username } = useParams(); //paramètres de l'url
+  // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
 
-const handleProductSelected = async (idProductClicked) => {
+  const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
-      setIsCollapsed(false);
-      await setCurrentTabSelected("edit");
-      await setProductSelected(productClickedOn);
-      titleEditRef.current.focus();
-}
+    setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
 
-
+  useEffect(() => {
+    initialiseUserSession(username, setMenu, setBasket);
+  }, []);
 
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

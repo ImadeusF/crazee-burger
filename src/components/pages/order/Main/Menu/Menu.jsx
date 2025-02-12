@@ -9,9 +9,11 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsSelected } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -25,19 +27,21 @@ export default function Menu() {
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation(); // pour que la card active reste active
-    handleDelete(idProductToDelete);
-    handleDeleteBasketProduct(idProductToDelete);
+    handleDelete(idProductToDelete, username);
+    handleDeleteBasketProduct(idProductToDelete, username);
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
   };
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation();
-    handleAddToBasket(idProductToAdd);
+    handleAddToBasket(idProductToAdd, username);
   };
+
+  if(menu === undefined) return <Loader />;
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={resetMenu} />;
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
   }
 
   return (
