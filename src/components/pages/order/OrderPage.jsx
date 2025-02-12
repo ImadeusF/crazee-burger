@@ -27,7 +27,7 @@ export default function OrderPage() {
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
-    setIsCollapsed(false);
+    await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
