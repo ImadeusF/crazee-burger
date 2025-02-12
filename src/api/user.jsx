@@ -12,19 +12,21 @@ export const getUser = async (idUser) => {
   }
 };
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
   const docRef = doc(db, "users", userId);
-  const newDoc = {
+  const newUserToCreate = {
     username: userId,
-    menu: fakeMenu.SMALL, // quand on crée un utilisateur, c'est toujours le même menu qui est associé
+    menu: fakeMenu.MEDIUM, // quand on crée un utilisateur, c'est toujours le même menu qui est associé
   };
-  setDoc(docRef, newDoc);
+  await setDoc(docRef, newUserToCreate);
+  return newUserToCreate;
 };
 
 export const authenticateUser = async (userId) => {
   const existingUser = await getUser(userId);
   
   if (!existingUser) {
-    createUser(userId);
+    return await createUser(userId);  
   }
+  return existingUser;
 }
