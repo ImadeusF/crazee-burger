@@ -38,7 +38,7 @@ export default function BasketProducts() {
                     exit={{ x: -100, opacity: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="basket-card">
+                    <div className="card-container">
                       <BasketCard
                         {...menuProduct}
                         imageSource={
@@ -75,7 +75,7 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;

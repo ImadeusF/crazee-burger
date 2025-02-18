@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { theme } from "../../themes";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
@@ -79,6 +79,17 @@ const CardStyled = styled.div`
       padding: 0;
       border: none;
       background: none;
+      animation: fadeInFromRight 0.5s ease-out forwards;
+      @keyframes fadeInFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
       .icon {
         width: 100%;
