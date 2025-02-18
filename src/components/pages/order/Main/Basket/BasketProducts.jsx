@@ -25,44 +25,46 @@ export default function BasketProducts() {
 
   return (
     <BasketProductsStyled>
-      <AnimatePresence>
-        {basket.map((basketProduct) => {
-          const menuProduct = findObjectById(basketProduct.id, menu);
-          return (
-            <motion.div
-              key={basketProduct.id}
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: -100, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="basket-card">
-                <BasketCard
-                  {...menuProduct}
-                  imageSource={
-                    menuProduct.imageSource
-                      ? menuProduct.imageSource
-                      : IMAGE_COMING_SOON
-                  }
-                  quantity={basketProduct.quantity}
-                  onDelete={(e) => handleOnDelete(e, basketProduct.id)}
-                  $isClickable={isModeAdmin}
-                  onClick={
-                    isModeAdmin
-                      ? () => handleProductSelected(basketProduct.id)
-                      : null
-                  }
-                  $isSelected={checkIfProductIsSelected(
-                    basketProduct.id,
-                    productSelected.id
-                  )}
-                  className={"basketcard-animation"}
-                />
-              </div>
-            </motion.div>
-          );
-        })}
-      </AnimatePresence>
+        <AnimatePresence>
+            {basket.length > 0 &&
+              basket.map((basketProduct) => {
+                console.log("lenght:", basket.length);
+                const menuProduct = findObjectById(basketProduct.id, menu);
+                return (
+                  <motion.div
+                    key={basketProduct.id}
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1, scale: 1 }}
+                    exit={{ x: -100, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="basket-card">
+                      <BasketCard
+                        {...menuProduct}
+                        imageSource={
+                          menuProduct.imageSource
+                            ? menuProduct.imageSource
+                            : IMAGE_COMING_SOON
+                        }
+                        quantity={basketProduct.quantity}
+                        onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+                        $isClickable={isModeAdmin}
+                        onClick={
+                          isModeAdmin
+                            ? () => handleProductSelected(basketProduct.id)
+                            : null
+                        }
+                        $isSelected={checkIfProductIsSelected(
+                          basketProduct.id,
+                          productSelected.id
+                        )}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
+         
+        </AnimatePresence>
     </BasketProductsStyled>
   );
 }
