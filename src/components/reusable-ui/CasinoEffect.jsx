@@ -8,7 +8,7 @@ export default function CasinoEffect({ count, className }) {
         key={count}
         initial={{ y: 100, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0 }}
+        transition={{ duration: 0.2 }}
       >
         <span className={className}>{count}</span>
       </motion.span>
