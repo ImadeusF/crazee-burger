@@ -5,7 +5,6 @@ import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import Basket from "./Basket/Basket";
-import { motion } from "motion/react";
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext);
@@ -15,15 +14,7 @@ export default function Main() {
       <Basket />
       <div className="menu-and-admin">
         <Menu />
-        {isModeAdmin && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Admin />
-          </motion.div>
-        )}
+        {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   );

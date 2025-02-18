@@ -3,13 +3,21 @@ import AdminTabs from "./AdminTabs";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Admin() {
   const { isCollapsed } = useContext(OrderContext);
   return (
     <AdminStyled>
-      <AdminTabs />
-      {!isCollapsed && <AdminPanel />}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        exit={{ y: 50, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <AdminTabs />
+        {!isCollapsed && <AdminPanel />}
+      </motion.div>
     </AdminStyled>
   );
 }

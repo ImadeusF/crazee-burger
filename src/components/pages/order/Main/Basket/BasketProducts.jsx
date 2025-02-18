@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../utils/array";
 import { checkIfProductIsSelected } from "../Menu/helper";
