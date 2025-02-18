@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../utils/array";
 import { checkIfProductIsSelected } from "../Menu/helper";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function BasketProducts() {
   const {
@@ -25,41 +25,44 @@ export default function BasketProducts() {
 
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => {
-        const menuProduct = findObjectById(basketProduct.id, menu);
-        return (
-          <motion.div
-            key={basketProduct.id}
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="basket-card">
-              <BasketCard
-                {...menuProduct}
-                imageSource={
-                  menuProduct.imageSource
-                    ? menuProduct.imageSource
-                    : IMAGE_COMING_SOON
-                }
-                quantity={basketProduct.quantity}
-                onDelete={(e) => handleOnDelete(e, basketProduct.id)}
-                $isClickable={isModeAdmin}
-                onClick={
-                  isModeAdmin
-                    ? () => handleProductSelected(basketProduct.id)
-                    : null
-                }
-                $isSelected={checkIfProductIsSelected(
-                  basketProduct.id,
-                  productSelected.id
-                )}
-                className={"basketcard-animation"}
-              />
-            </div>
-          </motion.div>
-        );
-      })}
+      <AnimatePresence>
+        {basket.map((basketProduct) => {
+          const menuProduct = findObjectById(basketProduct.id, menu);
+          return (
+            <motion.div
+              key={basketProduct.id}
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1, scale: 1 }}
+              exit={{ x: -100, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="basket-card">
+                <BasketCard
+                  {...menuProduct}
+                  imageSource={
+                    menuProduct.imageSource
+                      ? menuProduct.imageSource
+                      : IMAGE_COMING_SOON
+                  }
+                  quantity={basketProduct.quantity}
+                  onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+                  $isClickable={isModeAdmin}
+                  onClick={
+                    isModeAdmin
+                      ? () => handleProductSelected(basketProduct.id)
+                      : null
+                  }
+                  $isSelected={checkIfProductIsSelected(
+                    basketProduct.id,
+                    productSelected.id
+                  )}
+                  className={"basketcard-animation"}
+                />
+              </div>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
     </BasketProductsStyled>
   );
 }
