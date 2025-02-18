@@ -19,9 +19,9 @@ const EmptyMenuAdminStyle = styled.div`
   box-shadow: ${theme.shadows.strong};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .title,
   .description {
@@ -36,12 +36,12 @@ const EmptyMenuAdminStyle = styled.div`
   }
 
   .description {
-    margin-top:20px;
+    margin-top: 20px;
   }
 
- button {
- margin-top: 30px;
- font-size: ${theme.fonts.size.XS};
- width:auto;
- }
+  button {
+    margin-top: 30px;
+    font-size: ${theme.fonts.size.XS};
+    width: auto;
+  }
 `;
