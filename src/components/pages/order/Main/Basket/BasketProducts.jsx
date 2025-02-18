@@ -5,47 +5,68 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../utils/array";
 import { checkIfProductIsSelected } from "../Menu/helper";
+import { motion } from "motion/react";
 
 export default function BasketProducts() {
-const { 
-  username,
-  basket,
-  isModeAdmin,
-  handleDeleteBasketProduct,
-  menu,
-  handleProductSelected,
-  productSelected,
- } = useContext(OrderContext);
-
+  const {
+    username,
+    basket,
+    isModeAdmin,
+    handleDeleteBasketProduct,
+    menu,
+    handleProductSelected,
+    productSelected,
+  } = useContext(OrderContext);
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteBasketProduct(id, username);
-  }
+  };
 
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => {
-        const menuProduct= findObjectById(basketProduct.id, menu);
+        const menuProduct = findObjectById(basketProduct.id, menu);
         return (
-       <div className="basket-card" key={basketProduct.id}>
-         <BasketCard 
-         {...menuProduct} 
-         imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON} 
-         quantity={basketProduct.quantity}
-         onDelete={(e) => handleOnDelete(e, basketProduct.id)}
-         $isClickable={isModeAdmin}
-         onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
-         $isSelected={checkIfProductIsSelected(basketProduct.id, productSelected.id)}
-         />
-       </div>
-      )})}
+          <motion.div
+            key={basketProduct.id}
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="basket-card">
+              <BasketCard
+                {...menuProduct}
+                imageSource={
+                  menuProduct.imageSource
+                    ? menuProduct.imageSource
+                    : IMAGE_COMING_SOON
+                }
+                quantity={basketProduct.quantity}
+                onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+                $isClickable={isModeAdmin}
+                onClick={
+                  isModeAdmin
+                    ? () => handleProductSelected(basketProduct.id)
+                    : null
+                }
+                $isSelected={checkIfProductIsSelected(
+                  basketProduct.id,
+                  productSelected.id
+                )}
+                className={"basketcard-animation"}
+              />
+            </div>
+          </motion.div>
+        );
+      })}
     </BasketProductsStyled>
   );
 }
 
 const BasketProductsStyled = styled.div`
   flex: 1;
+  display: flex;
   flex-direction: column;
   overflow-y: scroll;
 
@@ -58,7 +79,7 @@ const BasketProductsStyled = styled.div`
       margin-top: 20px;
     }
     &:last-child {
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
   }
 `;
