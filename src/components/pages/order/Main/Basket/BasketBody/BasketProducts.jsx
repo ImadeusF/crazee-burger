@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BasketCard from "../BasketCard";
+import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
@@ -28,7 +28,6 @@ export default function BasketProducts() {
         <AnimatePresence>
             {basket.length > 0 &&
               basket.map((basketProduct) => {
-                console.log("lenght:", basket.length);
                 const menuProduct = findObjectById(basketProduct.id, menu);
                 return (
                   <motion.div
