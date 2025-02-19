@@ -28,6 +28,14 @@ const Form = React.forwardRef(
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}
+          <select name="isAvailable" className="is-available" id="3">
+            <option value={true}>En stock</option>
+            <option value={false} >Rupture</option>
+          </select>
+          <select name="isPublicised" className="is-publicised" id="4">
+            <option value={true}>Sans pub</option>
+            <option value={false}>Avec pub</option>
+          </select>
         </div>
         <div className="form-footer">{children}</div>
       </FormStyled>
@@ -60,8 +68,9 @@ const FormStyled = styled.form`
     grid-template-areas:
       "title title title"
       "image-source image-source image-source"
-      "price extra1 extra2";
+      "price is-available is-publicised";
     grid-row-gap: 8px;
+    grid-column-gap: 8px;
 
     .title {
       grid-area: title;
@@ -75,13 +84,13 @@ const FormStyled = styled.form`
       grid-area: price;
       background: red;
     }
-    .extra1 {
-      grid-area: extra1;
-      background: yellow;
+    .is-available {
+      grid-area: is-available;
+      background: pink;
     }
-    .extra2 {
-      grid-area: extra2;
-      background: green;
+    .is-publicised {
+      grid-area: is-publicised;
+      background: yellow;
     }
   }
 
