@@ -3,7 +3,7 @@ import AdminTabs from "./AdminTabs";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 
 export default function Admin() {
   const { isCollapsed } = useContext(OrderContext);

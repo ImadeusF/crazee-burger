@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import BasketCard from "./BasketCard";
-import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import BasketCard from "../BasketCard";
+import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
-import { findObjectById } from "../../../../../utils/array";
-import { checkIfProductIsSelected } from "../Menu/helper";
+import OrderContext from "../../../../../../context/OrderContext";
+import { findObjectById } from "../../../../../../utils/array";
+import { checkIfProductIsSelected } from "../../Menu/helper";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function BasketProducts() {
