@@ -1,5 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { theme } from "../../../../../../themes";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 
 export default function ImagePreview({ imageSource, title }) {
   return (
@@ -24,6 +35,7 @@ const ImagePreviewStyled = styled.div`
     height: 100px;
     object-fit: contain;
     object-position: center;
+    animation: ${fadeIn} 1s;
   }
 
   .empty-image {
