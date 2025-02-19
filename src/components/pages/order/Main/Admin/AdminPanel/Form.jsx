@@ -24,6 +24,7 @@ const Form = React.forwardRef(
               onFocus={onFocus}
               onBlur={onBlur}
               version={"minimalist"}
+              className={inputText.className}
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}
@@ -54,9 +55,34 @@ const FormStyled = styled.form`
   .input-fields {
     grid-area: input-fields;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "title title title"
+      "image-source image-source image-source"
+      "price extra1 extra2";
     grid-row-gap: 8px;
+
+    .title {
+      grid-area: title;
+    }
+
+    .image-source {
+      grid-area: image-source;
+    }
+
+    .price {
+      grid-area: price;
+      background: red;
+    }
+    .extra1 {
+      grid-area: extra1;
+      background: yellow;
+    }
+    .extra2 {
+      grid-area: extra2;
+      background: green;
+    }
   }
 
   .form-footer {
