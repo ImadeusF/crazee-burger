@@ -7,7 +7,7 @@ import OrderContext from "../../../../context/OrderContext";
 import Basket from "./Basket/Basket";
 
 export default function Main() {
-const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
+  const { isModeAdmin } = useContext(OrderContext);
 
   return (
     <MainStyled className="main">
@@ -29,7 +29,7 @@ const MainStyled = styled.div`
 
   display: grid;
   grid-template-columns: 25% 1fr;
-  overflow:hidden;
+  overflow: hidden;
 
   .menu-and-admin {
     position: relative;
