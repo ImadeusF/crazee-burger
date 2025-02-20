@@ -79,22 +79,17 @@ const FormStyled = styled.form`
     .title {
       grid-area: title;
     }
-
     .image-source {
       grid-area: image-source;
     }
-
     .price {
       grid-area: price;
-      background: red;
     }
     .is-available {
       grid-area: is-available;
-      background: pink;
     }
     .is-publicised {
       grid-area: is-publicised;
-      background: yellow;
     }
   }
 
