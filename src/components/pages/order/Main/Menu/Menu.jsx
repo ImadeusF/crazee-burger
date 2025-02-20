@@ -7,7 +7,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsSelected } from "./helper";
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
 import Loader from "./Loader";
 import { motion, AnimatePresence } from "motion/react";
@@ -69,6 +69,8 @@ export default function Menu() {
                 $isHoverable={isModeAdmin}
                 $isSelected={checkIfProductIsSelected(id, productSelected.id)}
                 onAdd={(e) => handleAddButton(e, id)}
+                overlapImageSource={IMAGE_NO_STOCK}
+                isOverlapImageVisible={true}
               />
             </motion.div>
           );

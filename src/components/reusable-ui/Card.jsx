@@ -13,6 +13,8 @@ export default function Card({
   $isHoverable,
   $isSelected,
   onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
 }) {
   return (
     <CardStyled
@@ -31,15 +33,31 @@ export default function Card({
             <TiDelete className="icon" />
           </button>
         )}
+
         <div className="image">
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img
+                src={overlapImageSource}
+                alt="overlap-image"
+                className="overlap-image"
+              />
+            </div>
+          )}
           <img src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} onClick={onAdd}/>
+              <Button
+                className="primary-button"
+                label={"Ajouter"}
+                onClick={onAdd}
+              />
             </div>
           </div>
         </div>
@@ -81,15 +99,15 @@ const CardStyled = styled.div`
       background: none;
       animation: fadeInFromRight 0.5s ease-out forwards;
       @keyframes fadeInFromRight {
-      0% {
-        opacity: 0;
-        transform: translateX(100%);
+        0% {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
 
       .icon {
         width: 100%;
@@ -115,6 +133,43 @@ const CardStyled = styled.div`
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          border: ${theme.borderRadius.extraRound};
+          animation: fadeInFromTop 0.5s ease-out forwards;
+          @keyframes fadeInFromTop {
+            0% {
+              position:absolute;
+              z-index:-1;
+              opacity: 0;
+              transform: translateY(-40%);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+
+        .transparent-layer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
       }
     }
 
