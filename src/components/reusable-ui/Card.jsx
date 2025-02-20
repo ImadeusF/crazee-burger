@@ -57,6 +57,7 @@ export default function Card({
                 className="primary-button"
                 label={"Ajouter"}
                 onClick={onAdd}
+                disabled={isOverlapImageVisible}
               />
             </div>
           </div>
@@ -147,8 +148,8 @@ const CardStyled = styled.div`
           animation: fadeInFromTop 0.5s ease-out forwards;
           @keyframes fadeInFromTop {
             0% {
-              position:absolute;
-              z-index:-1;
+              position: absolute;
+              z-index: -1;
               opacity: 0;
               transform: translateY(-40%);
             }
@@ -217,7 +218,6 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
           }
         }
@@ -259,7 +259,7 @@ const selectedStyle = css`
       color: ${theme.colors.primary};
     }
 
-    &.is-disabled {
+    &:disabled {
       opacity: 50%;
       cursor: not-allowed;
       z-index: 2;
