@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-export default function SelectInput({ options, name, className, id, Icon }) {
+export default function SelectInput({ value, options, name, className, id, Icon, onChange }) {
   return (
-    <SelectInputStyled name={name} className={className} id={id}>
+    <SelectInputStyled value={value} name={name} className={className} id={id} onChange={onChange} >
     {options.map(({value, label}) => (
-      <option key={value} value={value}>
+      <option key={label} value={value}>
         {label}
       </option>
     ))}
