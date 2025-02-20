@@ -11,6 +11,7 @@ import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from "../../../../..
 import { isEmpty } from "../../../../../utils/array";
 import Loader from "./Loader";
 import { motion, AnimatePresence } from "motion/react";
+import { convertStringToBoolean } from "../../../../../utils/string";
 
 export default function Menu() {
   const {
@@ -49,7 +50,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       <AnimatePresence>
-        {menu.map(({ id, title, imageSource, price }) => {
+        {menu.map(({ id, title, imageSource, price, isAvailable }) => {
           return (
             <motion.div
               key={id}
@@ -70,7 +71,7 @@ export default function Menu() {
                 $isSelected={checkIfProductIsSelected(id, productSelected.id)}
                 onAdd={(e) => handleAddButton(e, id)}
                 overlapImageSource={IMAGE_NO_STOCK}
-                isOverlapImageVisible={true}
+                isOverlapImageVisible={convertStringToBoolean(isAvailable) === false} //de base isAvailable is a string
               />
             </motion.div>
           );

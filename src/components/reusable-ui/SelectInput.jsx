@@ -16,8 +16,8 @@ export default function SelectInput({
     <SelectInputStyled className={className}>
       {Icon && <div className="icon">{Icon}</div>}
       <select name={name} value={value} id={id} onChange={onChange} onBlur={onBlur} onFocus={onFocus}>
-      {options.map(({ value, label }) => (
-        <option key={label} value={value}>
+      {options.map(({ optionValue, label }) => (
+        <option key={label} value={optionValue}>
           {label}
         </option>
       ))}
