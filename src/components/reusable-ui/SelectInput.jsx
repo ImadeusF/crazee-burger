@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function SelectInput({ options, name, className, id }) {
+export default function SelectInput({ options, name, className, id, Icon }) {
   return (
     <SelectInputStyled name={name} className={className} id={id}>
     {options.map(({value, label}) => (
