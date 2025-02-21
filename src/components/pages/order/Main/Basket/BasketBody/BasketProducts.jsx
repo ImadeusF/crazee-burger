@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
-import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
+import { BASKET_MESSAGE, IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../../utils/array";
 import { checkIfProductIsSelected } from "../../Menu/helper";
 import { motion, AnimatePresence } from "motion/react";
+import { formatPrice } from "../../../../../../utils/maths";
+import { convertStringToBoolean } from "../../../../../../utils/string";
 
 export default function BasketProducts() {
   const {
@@ -57,6 +59,8 @@ export default function BasketProducts() {
                           basketProduct.id,
                           productSelected.id
                         )}
+                        price={convertStringToBoolean(menuProduct.isAvailable) ? formatPrice(menuProduct.price) : BASKET_MESSAGE.NOT_AVAILABLE}
+                        //de base isAvailable is a string
                       />
                     </div>
                   </motion.div>
