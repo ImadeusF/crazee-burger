@@ -3,7 +3,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import { BsFillCameraFill } from "react-icons/bs";
 import { FiPackage } from "react-icons/fi";
 import { GoMegaphone } from "react-icons/go";
-import { isAvailableOptions, isPublicisedOptions } from "../../../../../../enums/select";
+import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../enums/select";
 
 export const getInputTextsConfig = (newProduct) => [
   {

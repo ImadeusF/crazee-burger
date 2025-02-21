@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ImagePreview from "./ImagePreview";
 import { Inputs } from "./Inputs";
+import ImagePreview from "./ImagePreview";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
