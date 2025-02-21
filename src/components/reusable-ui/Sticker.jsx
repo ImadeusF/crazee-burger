@@ -1,6 +1,5 @@
-import React from "react"
 import styled from "styled-components"
-import { theme } from "../../theme"
+import { theme } from "../../themes"
 
 export default function Sticker({ label = "new", className }) {
   return <StickerStyled className={className}>{label}</StickerStyled>

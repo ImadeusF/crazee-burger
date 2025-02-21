@@ -136,14 +136,13 @@ const MenuStyled = styled.div`
 
 .ribbon-container {
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   transition: transform 0.3s ease-out;
 }
 
 .card-container.is-hoverable:hover .ribbon-container {
   transform: scale(1.10);
 }
-
 `;
 
 
