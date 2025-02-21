@@ -136,7 +136,7 @@ const MenuStyled = styled.div`
 
 .ribbon-container {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   transition: transform 0.3s ease-out;
 }
 
