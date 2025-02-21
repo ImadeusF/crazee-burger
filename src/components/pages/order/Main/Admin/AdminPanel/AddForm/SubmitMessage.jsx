@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../themes";
+import { theme } from "../../../../../../../themes";
 import { FiCheck } from "react-icons/fi";
 
 export default function SubmitMessage() {
