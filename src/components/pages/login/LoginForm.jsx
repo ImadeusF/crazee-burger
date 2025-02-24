@@ -8,6 +8,7 @@ import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { authenticateUser } from "../../../api/user";
 import Welcome from "./Welcome";
+import { devices } from "../../../enums/devices";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -26,21 +27,18 @@ export default function LoginForm() {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-     <Welcome />
+      <Welcome />
       <div>
-        <TextInput 
-        value={username} 
-        onChange={handleChange} 
-        placeholder={"Entrez votre prénom"}
-        required
-        Icon={<BsPersonCircle />}  
-        className={"input-login"}
-        version={"normal"}
+        <TextInput
+          value={username}
+          onChange={handleChange}
+          placeholder={"Entrez votre prénom"}
+          required
+          Icon={<BsPersonCircle />}
+          className={"input-login"}
+          version={"normal"}
         />
-        <Button
-        label={"Accéder à votre espace"}
-        Icon={<IoChevronForward />}
-        />
+        <Button label={"Accéder à votre espace"} Icon={<IoChevronForward />} />
       </div>
     </LoginFormStyled>
   );
@@ -55,8 +53,17 @@ const LoginFormStyled = styled.form`
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
- 
+  @media ${devices.md} {
+    max-width: auto;
+    min-width: auto;
+  }
+  @media ${devices.xs} {
+    box-sizing: border-box;
+    max-width: 300px;
+    min-width: 300px;
+  }
+
   .input-login {
     margin: 18px 0; //must be handled in parent
   }
-`
+`;
