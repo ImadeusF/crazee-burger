@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {theme} from "../../themes";
+import { devices } from "../../enums/devices";
 
 
 export default function Tab({label, Icon, onClick, className}) {
@@ -52,4 +53,8 @@ const TabStyled = styled.button`
     .label {
       margin-left:13px;
     }
+
+     @media ${devices.md} {
+      padding:0px 10px;
+      }
 `;

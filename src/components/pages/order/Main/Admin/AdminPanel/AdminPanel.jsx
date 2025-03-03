@@ -4,6 +4,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import { getTabsConfig, getTabSelected } from "../getTabsConfig";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import { devices } from "../../../../../../enums/devices";
 
 export default function AdminPanel() {
   const { currentTabSelected, productSelected } = useContext(OrderContext);
@@ -26,4 +27,8 @@ const AdminPanelStyled = styled.div`
   box-shadow: ${theme.shadows.subtle};
   padding: 30px 5%;
   box-sizing: border-box;
+
+  @media ${devices.md} {
+    height: 50vh;
+    }
 `;

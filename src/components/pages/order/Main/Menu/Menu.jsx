@@ -67,14 +67,18 @@ export default function Menu() {
                 transition={{ duration: 0.5 }}
                 classname="card-wrapper"
               >
-                 <div className={`card-container ${isModeAdmin ? "is-hoverable" : ""}`}>
+                <div
+                  className={`card-container ${
+                    isModeAdmin ? "is-hoverable" : ""
+                  }`}
+                >
                   {convertStringToBoolean(isPublicised) && (
                     <motion.div
                       key={`ribbon-${id}`}
-                      initial={{ x: 0, y: 0, opacity: 0, scale: 1 }} 
-                      animate={{ x: 0, y: 0, opacity: 1, scale: 1 }} 
-                      whileHover={isModeAdmin ? { scale: 1.05 } : {}} 
-                      exit={{ x: -100, y: -100, opacity: 0, scale: 0.5 }} 
+                      initial={{ x: 0, y: 0, opacity: 0, scale: 1 }}
+                      animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                      whileHover={isModeAdmin ? { scale: 1.05 } : {}}
+                      exit={{ x: -100, y: -100, opacity: 0, scale: 0.5 }}
                       transition={{ duration: 1, ease: "easeInOut" }}
                       className="ribbon-container"
                     >
@@ -127,26 +131,25 @@ const MenuStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
   .card-container {
-  position: relative;
-  transition: transform 0.3s ease-out;
-}
+    position: relative;
+    transition: transform 0.3s ease-out;
+  }
 
-.card-container.is-hoverable:hover {
-  transform: scale(1.05);
-}
+  .card-container.is-hoverable:hover {
+    transform: scale(1.05);
+  }
 
-.ribbon-container {
-  position: absolute;
-  z-index: 2;
-  transition: transform 0.3s ease-out;
-}
+  .ribbon-container {
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+  }
 
-.card-container.is-hoverable:hover .ribbon-container {
-  transform: scale(1.10);
-}
+  .card-container.is-hoverable:hover .ribbon-container {
+    transform: scale(1.1);
+  }
 
-
-@media ${devices.md} {
+  @media ${devices.md} {
     grid-template-columns: repeat(2, 1fr);
     padding: 50px 20px 150px 40px;
     grid-row-gap: 40px;
@@ -157,6 +160,3 @@ const MenuStyled = styled.div`
     grid-row-gap: 40px;
   }
 `;
-
-
-

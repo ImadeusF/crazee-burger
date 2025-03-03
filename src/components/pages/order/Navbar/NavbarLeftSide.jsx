@@ -16,7 +16,10 @@ const NavbarLeftSideStyled = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 50px;
-  
+
+  @media ${devices.xsm} {
+    padding-left: 0px;
+  }
   .logo-order-page {
     cursor: pointer;
   }

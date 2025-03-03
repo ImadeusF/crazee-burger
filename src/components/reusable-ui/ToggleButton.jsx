@@ -1,3 +1,5 @@
+import { FaLock, FaUnlock } from "react-icons/fa";
+import { devices } from "../../enums/devices";
 import { theme } from "../../themes";
 import styled from "styled-components";
 
@@ -6,26 +8,35 @@ export default function ToggleButton({
   onToggle,
   labelIfChecked = "Ouvrir",
   labelIfUnchecked = "Fermer",
+  icon,
   couleurDuBackground,
-  couleurDuTexte
+  couleurDuTexte,
 }) {
   return (
-    <ToggleButtonStyled couleurDuBackground={couleurDuBackground} couleurDuTexte={couleurDuTexte}>
-      <input
-        type="checkbox"
-        className="toggle"
-        id="rounded"
-        checked={isChecked}
-        onChange={onToggle}
-      />
-      <label
-        htmlFor="rounded"
-        className="rounded"
-        data-checked={labelIfChecked}
-        data-unchecked={labelIfUnchecked}
-      ></label>
+    <ToggleButtonStyled
+      couleurDuBackground={couleurDuBackground}
+      couleurDuTexte={couleurDuTexte}
+    >
+      <button className="btn-lock" aria-label="Admin-mode" onClick={onToggle}>
+        {isChecked ? <FaUnlock /> : <FaLock />}
+      </button>
+      <div className="btn-wrap">
+        <input
+          type="checkbox"
+          className="toggle"
+          id="rounded"
+          checked={isChecked}
+          onChange={onToggle}
+        />
+        <label
+          htmlFor="rounded"
+          className="rounded"
+          data-checked={labelIfChecked}
+          data-unchecked={labelIfUnchecked}
+        ></label>
+      </div>
     </ToggleButtonStyled>
-  )
+  );
 }
 
 const ToggleButtonStyled = styled.div`
@@ -42,7 +53,7 @@ const ToggleButtonStyled = styled.div`
     &.toggle + label {
       display: inline-block;
       height: 40px;
-      width: 100px;
+      width: 200px;
       position: relative;
       font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
@@ -68,7 +79,7 @@ const ToggleButtonStyled = styled.div`
     // text inside the switch button (for checked and unchecked)
     &.toggle + label:after {
       /* border: 1px solid blue; */
-      width: 75px;
+      width: 150px;
       text-align: center;
       z-index: 2;
       text-transform: uppercase;
@@ -90,7 +101,10 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${(props) => props.couleurDuBackground ? props.couleurDuBackground : theme.colors.background_dark};
+      background-color: ${(props) =>
+        props.couleurDuBackground
+          ? props.couleurDuBackground
+          : theme.colors.background_dark};
       /* text-align: right; */
     }
 
@@ -100,7 +114,8 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: ${(props) => props.couleurDuTexte ? props.couleurDuTexte : theme.colors.primary};
+      color: ${(props) =>
+        props.couleurDuTexte ? props.couleurDuTexte : theme.colors.primary};
       font-weight: ${theme.fonts.weights.bold};
     }
 
@@ -128,8 +143,30 @@ const ToggleButtonStyled = styled.div`
 
     // small circle when checked
     &.toggle:checked + label:before {
-      left: 64px;
+      left: 162px;
       background-color: ${theme.colors.primary};
     }
   }
-`
+
+  .btn-lock {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: ${theme.colors.greyBlue};
+    cursor: pointer;
+  }
+
+  .btn-lock {
+    @media ${devices.lg} {
+      display: none;
+    }
+    @media ${devices.md} {
+      display: block;
+    }
+  }
+  .btn-wrap {
+    @media ${devices.md} {
+      display: none;
+    }
+  }
+`;
