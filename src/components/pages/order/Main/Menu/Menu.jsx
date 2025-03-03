@@ -17,6 +17,7 @@ import Loader from "./Loader";
 import { motion, AnimatePresence } from "motion/react";
 import { convertStringToBoolean } from "../../../../../utils/string";
 import Ribbon from "../../../../reusable-ui/Ribbon";
+import { devices } from "../../../../../enums/devices";
 
 export default function Menu() {
   const {
@@ -143,6 +144,18 @@ const MenuStyled = styled.div`
 .card-container.is-hoverable:hover .ribbon-container {
   transform: scale(1.10);
 }
+
+
+@media ${devices.md} {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 20px 150px 40px;
+    grid-row-gap: 40px;
+  }
+  @media ${devices.xsm} {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 50px 20px 150px 40px;
+    grid-row-gap: 40px;
+  }
 `;
 
 

@@ -42,7 +42,7 @@ const ToggleButtonStyled = styled.div`
     &.toggle + label {
       display: inline-block;
       height: 40px;
-      width: 200px;
+      width: 100px;
       position: relative;
       font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
@@ -68,7 +68,7 @@ const ToggleButtonStyled = styled.div`
     // text inside the switch button (for checked and unchecked)
     &.toggle + label:after {
       /* border: 1px solid blue; */
-      width: 150px;
+      width: 75px;
       text-align: center;
       z-index: 2;
       text-transform: uppercase;
@@ -128,7 +128,7 @@ const ToggleButtonStyled = styled.div`
 
     // small circle when checked
     &.toggle:checked + label:before {
-      left: 162px;
+      left: 64px;
       background-color: ${theme.colors.primary};
     }
   }

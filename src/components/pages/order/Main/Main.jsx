@@ -5,6 +5,7 @@ import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import Basket from "./Basket/Basket";
+import { devices } from "../../../../enums/devices";
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext);
@@ -30,6 +31,10 @@ const MainStyled = styled.div`
   display: grid;
   grid-template-columns: 25% 1fr;
   overflow: hidden;
+
+  @media ${devices.lg} {
+    grid-template-columns: 0% 1fr;
+  }
 
   .menu-and-admin {
     position: relative;

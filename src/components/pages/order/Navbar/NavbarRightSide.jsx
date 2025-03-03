@@ -3,7 +3,6 @@ import Profile from "./Profile";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { FaUserSecret } from "react-icons/fa";
 import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import OrderContext from "../../../../context/OrderContext";
@@ -32,8 +31,8 @@ export default function NavbarRightSide() {
       <ToggleButton
         isChecked={isModeAdmin}
         onToggle={displayToastNotification}
-        labelIfChecked="Mode admin activé"
-        labelIfUnchecked="Mode admin désactivé"
+        labelIfChecked="Admin"
+        labelIfUnchecked="User"
         // couleurDuBackground={"green"}
         // couleurDuTexte={"white"}
       />
