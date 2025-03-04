@@ -165,13 +165,15 @@ const ToggleButtonStyled = styled.div`
     @media ${devices.lgx} {
       display: none;
     }
-
     @media ${devices.lg} {
+      display: none;
+    }
+    @media ${devices.md} {
       display: flex;
     }
   }
   .btn-wrap {
-    @media ${devices.lg} {
+    @media ${devices.md} {
       display: none;
     }
   }
