@@ -162,15 +162,16 @@ const ToggleButtonStyled = styled.div`
   }
 
   .btn-lock {
-    @media ${devices.lg} {
+    @media ${devices.lgx} {
       display: none;
     }
-    @media ${devices.md} {
+
+    @media ${devices.lg} {
       display: flex;
     }
   }
   .btn-wrap {
-    @media ${devices.md} {
+    @media ${devices.lg} {
       display: none;
     }
   }

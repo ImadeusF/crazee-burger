@@ -74,13 +74,6 @@ const CardStyled = styled.div`
   width: 240px;
   height: 330px;
 
-  @media ${devices.lg} {
-    transform: scale(0.9);
-  }
-  @media ${devices.md} {
-    transform: scale(1);
-  }
-
   .card {
     position: relative;
     background: ${theme.colors.white};
@@ -244,12 +237,6 @@ const hoverableStyle = css`
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
     border-radius: ${theme.borderRadius.extraRound};
-    @media ${devices.lg} {
-      transform: scale(0.95);
-    }
-    @media ${devices.md} {
-      transform: scale(1.05);
-    }
   }
 `;
 

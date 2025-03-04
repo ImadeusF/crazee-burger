@@ -6,7 +6,8 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function BasketShop() {
-  const { basket } = useContext(OrderContext);
+  const { basket, isBasketSmallDevicesActive, setIsBasketSmallDevicesActive } =
+    useContext(OrderContext);
 
   const emptyBasket = basket.length === 0;
 
@@ -15,13 +16,16 @@ export default function BasketShop() {
     return total;
   }, 0);
 
+  const handleClick = () => {
+    setIsBasketSmallDevicesActive(!isBasketSmallDevicesActive);
+  };
+
   return (
-    <BasketShopStyled>
+    <BasketShopStyled onClick={() => handleClick()} className={isBasketSmallDevicesActive && "active"}>
       <button className="btn-store" aria-label="Admin-store">
         {emptyBasket ? null : (
           <span className="basket-quantity">{totalProductsInBasket}</span>
         )}
-
         <MdOutlineLocalGroceryStore />
       </button>
     </BasketShopStyled>
@@ -50,10 +54,11 @@ const BasketShopStyled = styled.div`
   }
 
   .btn-store {
-    @media ${devices.lg} {
+    @media ${devices.lgx} {
       display: none;
     }
-    @media ${devices.md} {
+
+    @media ${devices.lg} {
       display: flex;
     }
   }

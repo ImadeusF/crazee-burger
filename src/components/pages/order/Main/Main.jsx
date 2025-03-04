@@ -8,10 +8,10 @@ import Basket from "./Basket/Basket";
 import { devices } from "../../../../enums/devices";
 
 export default function Main() {
-  const { isModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin, isBasketSmallDevicesActive } = useContext(OrderContext);
 
   return (
-    <MainStyled className="main">
+    <MainStyled className="main" $isBasketSmallDevicesActive={isBasketSmallDevicesActive}>
       <Basket />
       <div className="menu-and-admin">
         <Menu />
@@ -33,7 +33,8 @@ const MainStyled = styled.div`
   overflow: hidden;
 
   @media ${devices.md} {
-    grid-template-columns: 0% 1fr;
+    grid-template-columns: ${({ $isBasketSmallDevicesActive }) =>
+      $isBasketSmallDevicesActive ? "0% 100%" : "100% 0%"};
   }
 
   .menu-and-admin {

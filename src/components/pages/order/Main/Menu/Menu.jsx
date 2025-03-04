@@ -149,7 +149,7 @@ const MenuStyled = styled.div`
     transform: scale(1.1);
   }
 
-  @media ${devices.md} {
+  @media ${devices.xl} {
     grid-template-columns: repeat(2, 1fr);
     padding: 50px 20px 150px 40px;
     grid-row-gap: 40px;
