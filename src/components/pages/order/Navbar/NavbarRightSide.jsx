@@ -3,10 +3,10 @@ import Profile from "./Profile";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { FaUserSecret } from "react-icons/fa";
 import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import OrderContext from "../../../../context/OrderContext";
+import { devices } from "../../../../enums/devices";
 
 export default function NavbarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
@@ -27,13 +27,16 @@ export default function NavbarRightSide() {
     }
     setIsModeAdmin(!isModeAdmin);
   };
+
+
   return (
     <NavbarRightSideStyled>
       <ToggleButton
         isChecked={isModeAdmin}
         onToggle={displayToastNotification}
-        labelIfChecked="Mode admin activé"
-        labelIfUnchecked="Mode admin désactivé"
+        icon={isModeAdmin}
+        labelIfChecked="Admin"
+        labelIfUnchecked="User"
         // couleurDuBackground={"green"}
         // couleurDuTexte={"white"}
       />
@@ -47,4 +50,8 @@ const NavbarRightSideStyled = styled.div`
   display: flex;
   align-items: center;
   padding-right: 50px;
+
+  @media ${devices.xsm} {
+    padding-right: 0px;
+  }
 `;

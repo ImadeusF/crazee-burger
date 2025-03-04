@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../themes";
+import { devices } from "../../../enums/devices";
 
 export default function Welcome() {
   return (
@@ -20,6 +21,10 @@ const WelcomeStyled = styled.div`
   h1 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P5};
+    
+    @media ${devices.xs} {
+      font-size: ${theme.fonts.size.P4};
+    }
   }
 
   h2 {

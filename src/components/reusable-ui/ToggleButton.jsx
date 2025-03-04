@@ -1,5 +1,8 @@
+import { FaLock, FaUnlock } from "react-icons/fa";
+import { devices } from "../../enums/devices";
 import { theme } from "../../themes";
 import styled from "styled-components";
+import BasketShop from "../pages/order/Navbar/BasketShop";
 
 export default function ToggleButton({
   isChecked,
@@ -7,25 +10,35 @@ export default function ToggleButton({
   labelIfChecked = "Ouvrir",
   labelIfUnchecked = "Fermer",
   couleurDuBackground,
-  couleurDuTexte
+  couleurDuTexte,
 }) {
   return (
-    <ToggleButtonStyled couleurDuBackground={couleurDuBackground} couleurDuTexte={couleurDuTexte}>
-      <input
-        type="checkbox"
-        className="toggle"
-        id="rounded"
-        checked={isChecked}
-        onChange={onToggle}
-      />
-      <label
-        htmlFor="rounded"
-        className="rounded"
-        data-checked={labelIfChecked}
-        data-unchecked={labelIfUnchecked}
-      ></label>
+    <ToggleButtonStyled
+      couleurDuBackground={couleurDuBackground}
+      couleurDuTexte={couleurDuTexte}
+    >
+      <BasketShop />
+
+      <button className="btn-lock" aria-label="Admin-mode" onClick={onToggle}>
+        {isChecked ? <FaUnlock /> : <FaLock />}
+      </button>
+      <div className="btn-wrap">
+        <input
+          type="checkbox"
+          className="toggle"
+          id="rounded"
+          checked={isChecked}
+          onChange={onToggle}
+        />
+        <label
+          htmlFor="rounded"
+          className="rounded"
+          data-checked={labelIfChecked}
+          data-unchecked={labelIfUnchecked}
+        ></label>
+      </div>
     </ToggleButtonStyled>
-  )
+  );
 }
 
 const ToggleButtonStyled = styled.div`
@@ -90,7 +103,10 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${(props) => props.couleurDuBackground ? props.couleurDuBackground : theme.colors.background_dark};
+      background-color: ${(props) =>
+        props.couleurDuBackground
+          ? props.couleurDuBackground
+          : theme.colors.background_dark};
       /* text-align: right; */
     }
 
@@ -100,7 +116,8 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: ${(props) => props.couleurDuTexte ? props.couleurDuTexte : theme.colors.primary};
+      color: ${(props) =>
+        props.couleurDuTexte ? props.couleurDuTexte : theme.colors.primary};
       font-weight: ${theme.fonts.weights.bold};
     }
 
@@ -132,4 +149,30 @@ const ToggleButtonStyled = styled.div`
       background-color: ${theme.colors.primary};
     }
   }
-`
+
+  .btn-lock {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: ${theme.colors.greyBlue};
+    cursor: pointer;
+    &:hover {
+      color: ${theme.colors.primary};
+    }
+  }
+
+  .btn-lock {
+    @media ${devices.lgx} {
+      display: none;
+    }
+
+    @media ${devices.lg} {
+      display: flex;
+    }
+  }
+  .btn-wrap {
+    @media ${devices.lg} {
+      display: none;
+    }
+  }
+`;

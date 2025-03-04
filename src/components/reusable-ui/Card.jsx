@@ -2,6 +2,7 @@ import styled, { css, keyframes } from "styled-components";
 import { theme } from "../../themes";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
+import { devices } from "../../enums/devices";
 
 export default function Card({
   title,
@@ -223,6 +224,7 @@ const CardStyled = styled.div`
         }
       }
     }
+
     ${({ $isHoverable, $isSelected }) =>
       $isHoverable && $isSelected && selectedStyle}
   }

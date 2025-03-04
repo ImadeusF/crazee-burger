@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Inputs } from "./Inputs";
 import ImagePreview from "./ImagePreview";
+import { devices } from "../../../../../../../enums/devices";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
@@ -44,5 +45,20 @@ const FormStyled = styled.form`
     align-items: center;
     position: relative;
     top: 3px;
+  }
+
+  @media ${devices.md} {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+      "image-preview "
+      "input-fields"
+      "input-fields"
+      "input-fields"
+      "submit-button";
+    width: 90%;
   }
 `;

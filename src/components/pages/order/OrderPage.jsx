@@ -24,6 +24,9 @@ export default function OrderPage() {
     useBasket();
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
+  const [isBasketSmallDevicesActive, setIsBasketSmallDevicesActive] =
+  useState(false);
+
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
@@ -59,6 +62,8 @@ export default function OrderPage() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    isBasketSmallDevicesActive,
+    setIsBasketSmallDevicesActive,
   };
 
   return (

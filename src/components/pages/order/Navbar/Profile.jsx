@@ -2,8 +2,9 @@ import { BsPersonCircle } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../themes";
+import { devices } from "../../../../enums/devices";
 
-export default function Profile() {
+export default function Profile({ onClick}) {
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
   
@@ -31,7 +32,6 @@ const ProfileStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 100px;
-  padding-left:50px;
 
   .info {
     margin-right: 10px;
@@ -68,5 +68,9 @@ const ProfileStyled = styled.div`
     height: 100%;
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
+    
+    @media ${devices.sm} {
+      display: none;
+    }
   }
 `;

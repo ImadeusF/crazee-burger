@@ -5,12 +5,13 @@ import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import Basket from "./Basket/Basket";
+import { devices } from "../../../../enums/devices";
 
 export default function Main() {
-  const { isModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin, isBasketSmallDevicesActive } = useContext(OrderContext);
 
   return (
-    <MainStyled className="main">
+    <MainStyled className="main" $isBasketSmallDevicesActive={isBasketSmallDevicesActive}>
       <Basket />
       <div className="menu-and-admin">
         <Menu />
@@ -30,6 +31,11 @@ const MainStyled = styled.div`
   display: grid;
   grid-template-columns: 25% 1fr;
   overflow: hidden;
+
+  @media ${devices.md} {
+    grid-template-columns: ${({ $isBasketSmallDevicesActive }) =>
+      $isBasketSmallDevicesActive ? "0% 100%" : "100% 0%"};
+  }
 
   .menu-and-admin {
     position: relative;

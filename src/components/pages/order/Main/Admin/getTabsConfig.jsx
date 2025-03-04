@@ -7,13 +7,13 @@ import HintMessage from "./AdminPanel/EditForm/HintMessage";
 export const getTabsConfig = (hasAlreadyBeenClicked) => [
     {
       index: "add",
-      label: "Ajouter un produit",
+      label: "Ajouter",
       Icon: <AiOutlinePlus />,
       Content: <AddForm />,
     },
     {
       index: "edit",
-      label: "Modifier un produit",
+      label: "Modifier",
       Icon: <MdModeEditOutline />,
       Content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
     },

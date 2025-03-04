@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../themes";
+import { devices } from "../../enums/devices";
 
 export default function Logo({ className, onClick }) {
   return (
@@ -15,23 +16,35 @@ const LogoStyled = styled.div`
   display: flex;
   align-items: center;
 
-    h1 {
-        display: inline;
-        text-align: center;
-        color: ${theme.colors.primary};
-        font-size: ${theme.fonts.size.P4};
-        line-height: 1em;
-        font-weight: ${theme.fonts.weights.bold};
-        text-transform: uppercase;  
-        letter-spacing: 1.5px;
-        font-family: "Amatic SC", cursive;
-    }
+  h1 {
+    display: inline;
+    text-align: center;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.P4};
+    line-height: 1em;
+    font-weight: ${theme.fonts.weights.bold};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
+  }
 
-    img {
-        object-fit: contain;
-        object-position: center;
-        height: 60px;
-        width: 80px;
-        margin: 0 5px;
+  img {
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px;
+    margin: 0 5px;
+  }
+
+  @media ${devices.xsm} {
+      h1 {
+        display: none;
+      }
+      img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.75);
+      }
     }
 `;

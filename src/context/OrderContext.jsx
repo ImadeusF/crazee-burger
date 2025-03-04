@@ -36,4 +36,7 @@ export default createContext ({
     basket: [],
     handleAddToBasket: () => {},
     handleDeleteBasketProduct: () => {},
+
+    isBasketSmallDevicesActive: false, 
+    setIsBasketSmallDevicesActive: () => {},
 });
