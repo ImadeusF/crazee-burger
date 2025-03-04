@@ -32,7 +32,7 @@ const MainStyled = styled.div`
   grid-template-columns: 25% 1fr;
   overflow: hidden;
 
-  @media ${devices.lg} {
+  @media ${devices.md} {
     grid-template-columns: 0% 1fr;
   }
 

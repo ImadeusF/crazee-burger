@@ -2,13 +2,13 @@ import { FaLock, FaUnlock } from "react-icons/fa";
 import { devices } from "../../enums/devices";
 import { theme } from "../../themes";
 import styled from "styled-components";
+import BasketShop from "../pages/order/Navbar/BasketShop";
 
 export default function ToggleButton({
   isChecked,
   onToggle,
   labelIfChecked = "Ouvrir",
   labelIfUnchecked = "Fermer",
-  icon,
   couleurDuBackground,
   couleurDuTexte,
 }) {
@@ -17,6 +17,8 @@ export default function ToggleButton({
       couleurDuBackground={couleurDuBackground}
       couleurDuTexte={couleurDuTexte}
     >
+      <BasketShop />
+
       <button className="btn-lock" aria-label="Admin-mode" onClick={onToggle}>
         {isChecked ? <FaUnlock /> : <FaLock />}
       </button>
@@ -154,6 +156,9 @@ const ToggleButtonStyled = styled.div`
     font-size: 1.2rem;
     color: ${theme.colors.greyBlue};
     cursor: pointer;
+    &:hover {
+      color: ${theme.colors.primary};
+    }
   }
 
   .btn-lock {
@@ -161,7 +166,7 @@ const ToggleButtonStyled = styled.div`
       display: none;
     }
     @media ${devices.md} {
-      display: block;
+      display: flex;
     }
   }
   .btn-wrap {

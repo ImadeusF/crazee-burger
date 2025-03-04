@@ -2,6 +2,7 @@ import styled, { css, keyframes } from "styled-components";
 import { theme } from "../../themes";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
+import { devices } from "../../enums/devices";
 
 export default function Card({
   title,
@@ -72,6 +73,13 @@ const CardStyled = styled.div`
 
   width: 240px;
   height: 330px;
+
+  @media ${devices.lg} {
+    transform: scale(0.9);
+  }
+  @media ${devices.md} {
+    transform: scale(1);
+  }
 
   .card {
     position: relative;
@@ -223,6 +231,7 @@ const CardStyled = styled.div`
         }
       }
     }
+
     ${({ $isHoverable, $isSelected }) =>
       $isHoverable && $isSelected && selectedStyle}
   }
@@ -235,6 +244,12 @@ const hoverableStyle = css`
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
     border-radius: ${theme.borderRadius.extraRound};
+    @media ${devices.lg} {
+      transform: scale(0.95);
+    }
+    @media ${devices.md} {
+      transform: scale(1.05);
+    }
   }
 `;
 

@@ -6,7 +6,6 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import OrderContext from "../../../../context/OrderContext";
-import { FaLock, FaUnlock } from "react-icons/fa";
 import { devices } from "../../../../enums/devices";
 
 export default function NavbarRightSide() {
@@ -28,6 +27,8 @@ export default function NavbarRightSide() {
     }
     setIsModeAdmin(!isModeAdmin);
   };
+
+
   return (
     <NavbarRightSideStyled>
       <ToggleButton

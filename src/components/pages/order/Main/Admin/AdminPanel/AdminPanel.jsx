@@ -29,6 +29,6 @@ const AdminPanelStyled = styled.div`
   box-sizing: border-box;
 
   @media ${devices.md} {
-    height: 50vh;
+    height: 70vh;
     }
 `;

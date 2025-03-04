@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme } from "../../../../themes";
 import { devices } from "../../../../enums/devices";
 
-export default function Profile() {
+export default function Profile({ onClick}) {
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
   
