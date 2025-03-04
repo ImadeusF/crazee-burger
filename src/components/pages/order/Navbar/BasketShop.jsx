@@ -57,6 +57,9 @@ const BasketShopStyled = styled.div`
     @media ${devices.lgx} {
       display: none;
     }
+    @media ${devices.lg} {
+      display: none;
+    }
     @media ${devices.md} {
       display: flex;
     }
