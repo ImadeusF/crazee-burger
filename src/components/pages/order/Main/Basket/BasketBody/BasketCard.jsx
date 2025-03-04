@@ -110,6 +110,10 @@ const BasketCardStyled = styled.div`
       font-size: ${theme.fonts.size.SM};
       font-weight: ${theme.fonts.weights.medium};
       font-family: ${theme.fonts.family.openSans};
+     //ellipsis
+      white-space: nowrap;
+      overflow: hidden; 
+      text-overflow: ellipsis;
     }
   }
 
@@ -154,7 +158,8 @@ const BasketCardStyled = styled.div`
       }
     }
   }
-  ${({ $isClickable, $isSelected }) => $isClickable && $isSelected && selectedStyle}
+  ${({ $isClickable, $isSelected }) =>
+    $isClickable && $isSelected && selectedStyle}
 `;
 
 const selectedStyle = css`
@@ -162,4 +167,5 @@ const selectedStyle = css`
   .price,
   .quantity {
     color: ${theme.colors.white};
-  }`
+  }
+`;
