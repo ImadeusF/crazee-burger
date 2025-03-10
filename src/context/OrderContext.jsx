@@ -39,4 +39,7 @@ export default createContext ({
 
     isBasketSmallDevicesActive: false, 
     setIsBasketSmallDevicesActive: () => {},
+
+    themeColor: "",
+    setThemeColor: () => {},
 });
