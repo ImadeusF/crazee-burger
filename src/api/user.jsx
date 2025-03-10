@@ -17,6 +17,7 @@ export const createUser = async (userId) => {
   const newUserToCreate = {
     username: userId,
     menu: fakeMenu.MEDIUM, // quand on crée un utilisateur, c'est toujours le même menu qui est associé
+    themeColor: "#ffa01b",
   };
   await setDoc(docRef, newUserToCreate);
   return newUserToCreate;

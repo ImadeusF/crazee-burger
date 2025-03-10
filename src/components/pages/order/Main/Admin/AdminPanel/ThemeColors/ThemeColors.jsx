@@ -1,17 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../../themes";
 import { useContext, useEffect, useState } from "react";
-import {
-  getLocalStorage,
-  setLocalStorage,
-} from "../../../../../../../utils/window";
 import OrderContext from "../../../../../../../context/OrderContext";
+import { saveThemeColor } from "../../../../../../../api/theme";
 
 export default function ThemeColors() {
   const { username, themeColor, setThemeColor } = useContext(OrderContext);
 
-  const userData = getLocalStorage(username) || {}; 
-  const initialThemeColor = userData.themeColor || theme.themecolors.orange;
+  const initialThemeColor = themeColor || theme.themecolors.orange;
 
   const [pickColor, setPickColor] = useState(initialThemeColor);
 
@@ -22,12 +18,7 @@ export default function ThemeColors() {
   const handleChangeColor = (color) => {
     setPickColor(color);
     setThemeColor(color)
-
-    const updatedUserData = {
-      ...userData, 
-      themeColor: color, 
-    };
-    setLocalStorage(username, updatedUserData);
+    saveThemeColor(username, color);
   };
 
   return (
