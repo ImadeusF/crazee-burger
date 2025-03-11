@@ -9,18 +9,20 @@ import { devices } from "../../../../../../enums/devices";
 export default function AdminPanel() {
   const { currentTabSelected, productSelected } = useContext(OrderContext);
 
-  const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT
+  const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT;
   const tabs = getTabsConfig(hasAlreadyBeenClicked);
   const tabSelected = getTabSelected(tabs, currentTabSelected);
 
   return (
     <AdminPanelStyled>
-     {currentTabSelected === tabSelected?.index && tabSelected?.Content}
+      {currentTabSelected === tabSelected?.index && tabSelected?.Content}
     </AdminPanelStyled>
   );
 }
 
 const AdminPanelStyled = styled.div`
+  position: sticky;
+  top: 10px;
   height: 240px;
   background: ${theme.colors.white};
   border-top: 1px solid ${theme.colors.greyLight};
@@ -29,6 +31,7 @@ const AdminPanelStyled = styled.div`
   box-sizing: border-box;
 
   @media ${devices.md} {
-    height: 70vh;
-    }
+    height: auto;
+    min-height: 60vh;
+  }
 `;
