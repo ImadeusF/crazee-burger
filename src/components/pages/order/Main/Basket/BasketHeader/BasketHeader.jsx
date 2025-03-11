@@ -8,13 +8,13 @@ import { calculateSumToPay } from "./helper";
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect";
 
 export default function BasketHeader() {
-  const { basket, menu } = useContext(OrderContext);
+  const { basket, menu, themeColor } = useContext(OrderContext);
 
   const sumToPay = calculateSumToPay(basket, menu);
 
   return (
     <Header>
-      <BasketHeaderStyled>
+      <BasketHeaderStyled $themeColor={themeColor}>
         <span className="total">Total</span>
         <CasinoEffect count={formatPrice(sumToPay)} />
       </BasketHeaderStyled>
@@ -27,7 +27,7 @@ const BasketHeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${theme.colors.primary};
+  color: ${({ $themeColor }) => $themeColor};
   font-family: ${theme.fonts.family.stylish};
   font-size: ${theme.fonts.size.P4};
   font-weight: ${theme.fonts.weights.bold};
