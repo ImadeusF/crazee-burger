@@ -13,6 +13,7 @@ export default function BasketCard({
   onClick,
   onDelete,
   $isSelected,
+  themeColor,
 }) {
   return (
     <BasketCardStyled
@@ -20,6 +21,7 @@ export default function BasketCard({
       $isClickable={$isClickable}
       onClick={onClick}
       $isSelected={$isSelected}
+      $themeColor={themeColor}
     >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
@@ -75,7 +77,7 @@ const BasketCardStyled = styled.div`
     display: grid;
     grid-template-columns: 70% 1fr;
     font-size: ${theme.fonts.size.P0};
-    color: ${theme.colors.primary};
+    color: ${({ $themeColor }) => $themeColor};
 
     .left-info {
       display: grid;
@@ -163,7 +165,7 @@ const BasketCardStyled = styled.div`
 `;
 
 const selectedStyle = css`
-  background: ${theme.colors.primary};
+  background: ${({ $themeColor }) => $themeColor};
   .price,
   .quantity {
     color: ${theme.colors.white};
