@@ -9,7 +9,7 @@ import OrderContext from "../../../../context/OrderContext";
 import { devices } from "../../../../enums/devices";
 
 export default function NavbarRightSide() {
-  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin, setIsModeAdmin, themeColor } = useContext(OrderContext);
 
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -37,11 +37,10 @@ export default function NavbarRightSide() {
         icon={isModeAdmin}
         labelIfChecked="Admin"
         labelIfUnchecked="User"
-        // couleurDuBackground={"green"}
-        // couleurDuTexte={"white"}
+        themeColor={themeColor}
       />
       <ToastAdmin />
-      <Profile />
+      <Profile themeColor={themeColor}/>
     </NavbarRightSideStyled>
   );
 }

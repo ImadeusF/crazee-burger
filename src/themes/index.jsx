@@ -18,6 +18,14 @@ const colors = {
   loginLine: "#f56a2c",
 };
 
+const themecolors = {
+  orange: "#ffa01b",
+  yellow: "#999932ea",
+  red: "#e25549",
+  purple: "purple",
+  blue: "#37a1af",
+}
+
 const spacing = {
   xxs: "4px",
   xs: "8px",
@@ -73,6 +81,7 @@ const shadows = {
 
 export const theme = {
   colors,
+  themecolors,
   fonts,
   gridUnit,
   borderRadius,

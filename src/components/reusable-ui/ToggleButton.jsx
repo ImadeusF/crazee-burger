@@ -9,13 +9,11 @@ export default function ToggleButton({
   onToggle,
   labelIfChecked = "Ouvrir",
   labelIfUnchecked = "Fermer",
-  couleurDuBackground,
-  couleurDuTexte,
+  themeColor,
 }) {
   return (
     <ToggleButtonStyled
-      couleurDuBackground={couleurDuBackground}
-      couleurDuTexte={couleurDuTexte}
+      $themeColor={themeColor}
     >
       <BasketShop />
 
@@ -116,21 +114,20 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: ${(props) =>
-        props.couleurDuTexte ? props.couleurDuTexte : theme.colors.primary};
+      color: ${({ $themeColor }) => $themeColor};
       font-weight: ${theme.fonts.weights.bold};
     }
 
     // small circle when not checked
     &.toggle:not(:checked) + label:before {
       left: 3px;
-      background-color: ${theme.colors.primary};
+      background-color: ${({ $themeColor }) => $themeColor};
     }
 
     // box container when checked
     &.toggle:checked + label {
       text-align: left;
-      border-color: ${theme.colors.primary};
+      border-color: ${({ $themeColor }) => $themeColor};
     }
 
     // label text when checked
@@ -146,7 +143,7 @@ const ToggleButtonStyled = styled.div`
     // small circle when checked
     &.toggle:checked + label:before {
       left: 162px;
-      background-color: ${theme.colors.primary};
+      background-color: ${({ $themeColor }) => $themeColor};
     }
   }
 
@@ -157,7 +154,7 @@ const ToggleButtonStyled = styled.div`
     color: ${theme.colors.greyBlue};
     cursor: pointer;
     &:hover {
-      color: ${theme.colors.primary};
+      color: ${({ $themeColor }) => $themeColor};
     }
   }
 

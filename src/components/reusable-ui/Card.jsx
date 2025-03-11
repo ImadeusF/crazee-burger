@@ -1,8 +1,7 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../themes";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
-import { devices } from "../../enums/devices";
 
 export default function Card({
   title,
@@ -16,6 +15,7 @@ export default function Card({
   onAdd,
   overlapImageSource,
   isOverlapImageVisible,
+  themeColor,
 }) {
   return (
     <CardStyled
@@ -23,6 +23,7 @@ export default function Card({
       onClick={onClick}
       $isHoverable={$isHoverable}
       $isSelected={$isSelected}
+      $themeColor={themeColor}
     >
       <div className="card">
         {hasDeleteButton && (
@@ -59,6 +60,7 @@ export default function Card({
                 label={"Ajouter"}
                 onClick={onAdd}
                 disabled={isOverlapImageVisible}
+                themeColor={themeColor}
               />
             </div>
           </div>
@@ -69,6 +71,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
+  //Applique les styles de hoverableStyle seulement si $isHoverable est activé (true).
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 
   width: 240px;
@@ -94,7 +97,7 @@ const CardStyled = styled.div`
       cursor: pointer;
       width: 30px;
       height: 30px;
-      color: ${theme.colors.primary};
+      color: ${({ $themeColor }) => $themeColor};
       z-index: 2;
       padding: 0;
       border: none;
@@ -117,7 +120,7 @@ const CardStyled = styled.div`
       }
 
       &:hover {
-        color: ${theme.colors.red};
+        color: ${theme.colors.incognito};
       }
 
       &:active {
@@ -208,7 +211,7 @@ const CardStyled = styled.div`
           overflow: hidden;
           text-overflow: ellipsis;
           font-weight: ${theme.fonts.weights.medium};
-          color: ${theme.colors.primary};
+          color: ${({ $themeColor }) => $themeColor};
         }
 
         .right-description {
@@ -234,31 +237,31 @@ const hoverableStyle = css`
   &:hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
-    box-shadow: ${theme.shadows.orangeHighlight};
+    box-shadow: ${({ $themeColor }) => `0 0 10px 3px ${$themeColor}`};
     cursor: pointer;
     border-radius: ${theme.borderRadius.extraRound};
   }
 `;
 
 const selectedStyle = css`
-  background: ${theme.colors.primary};
+  background: ${({ $themeColor }) => $themeColor};
 
   .primary-button {
-    color: ${theme.colors.primary};
+    color: ${({ $themeColor }) => $themeColor};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.white};
     transition: all 20ms ease-out;
 
     &:hover {
       color: ${theme.colors.white};
-      background-color: ${theme.colors.primary};
+      background-color: ${({ $themeColor }) => $themeColor};
       border: 1px solid ${theme.colors.white};
       transition: all 20ms ease-out;
     }
 
     &:active {
       background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
+      color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
     }
 
     &:disabled {
@@ -270,17 +273,17 @@ const selectedStyle = css`
     &.with-focus {
       border: 1px solid ${theme.colors.white};
       background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
+      color: ${({ themeColor }) => themeColor};
 
       &:hover {
-        color: ${theme.colors.white};
+        color: ${({ themeColor }) => themeColor};
         background-color: ${theme.colors.primary};
         border: 1px solid ${theme.colors.white};
       }
 
       &:active {
         background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
+        color: ${({ themeColor }) => themeColor};
       }
     }
   }

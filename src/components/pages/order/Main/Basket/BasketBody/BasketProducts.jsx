@@ -22,6 +22,7 @@ export default function BasketProducts() {
     menu,
     handleProductSelected,
     productSelected,
+    themeColor
   } = useContext(OrderContext);
 
   const handleOnDelete = (e, id) => {
@@ -73,6 +74,7 @@ export default function BasketProducts() {
                         : BASKET_MESSAGE.NOT_AVAILABLE
                     }
                     //de base isAvailable is a string
+                    themeColor={themeColor}
                   />
                 </div>
               </motion.div>

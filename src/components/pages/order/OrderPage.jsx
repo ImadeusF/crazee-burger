@@ -26,6 +26,7 @@ export default function OrderPage() {
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
   const [isBasketSmallDevicesActive, setIsBasketSmallDevicesActive] =
   useState(false);
+  const [themeColor, setThemeColor] = useState(theme.colors.primary); 
 
 
   const handleProductSelected = async (idProductClicked) => {
@@ -37,7 +38,7 @@ export default function OrderPage() {
   };
 
   useEffect(() => {
-    initialiseUserSession(username, setMenu, setBasket);
+    initialiseUserSession(username, setMenu, setBasket, setThemeColor, theme.colors.primary);
   }, []);
 
   const orderContextValue = {
@@ -64,11 +65,13 @@ export default function OrderPage() {
     handleProductSelected,
     isBasketSmallDevicesActive,
     setIsBasketSmallDevicesActive,
+    themeColor,
+    setThemeColor,
   };
 
   return (
     <OrderContext.Provider value={orderContextValue}>
-      <OrderPageStyle>
+      <OrderPageStyle $themeColor={themeColor}>
         <div className="container">
           <Navbar />
           <Main />
@@ -79,7 +82,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyle = styled.div`
-  background: ${theme.colors.primary};
+  background: ${({ $themeColor }) => $themeColor};
   height: 100vh;
   display: flex;
   justify-content: center;

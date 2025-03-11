@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../../themes";
 
-export default function EditInfoMessage() {
+export default function EditInfoMessage({ themeColor }) {
   return (
-    <EditInfoMessageStyled>
+    <EditInfoMessageStyled $themeColor={themeColor}>
       Cliquer sur un produit du menu pour le modifier {""}
       <span className="live-update">en temps réel</span>
     </EditInfoMessageStyled>
@@ -11,7 +11,7 @@ export default function EditInfoMessage() {
 }
 
 const EditInfoMessageStyled = styled.span`
-  color: ${theme.colors.primary};
+  color: ${({ $themeColor }) => $themeColor};
   font-size: ${theme.fonts.size.SM};
 
   .live-update {

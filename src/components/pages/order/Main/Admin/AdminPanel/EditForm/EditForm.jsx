@@ -12,6 +12,7 @@ export default function EditForm() {
     setProductSelected,
     handleEdit,
     titleEditRef,
+    themeColor,
   } = useContext(OrderContext);
 
   const [valueOnFocus, setValueOnFocus] = useState();
@@ -47,7 +48,7 @@ export default function EditForm() {
       onBlur={handleOnBlur}
       ref={titleEditRef}
     >
-      { isSaved ? <SavingMessage /> : <EditInfoMessage /> }
+      { isSaved ? <SavingMessage /> : <EditInfoMessage themeColor={themeColor} /> }
     </Form>
   );
 }

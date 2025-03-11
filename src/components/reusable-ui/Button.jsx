@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../themes";
 
-export default function Button({ label, Icon, className, version = "normal", onClick, disabled }) {
+export default function Button({ label, Icon, className, version = "normal", onClick, disabled, themeColor }) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled}>
+    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled} $themeColor={themeColor}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -29,20 +29,21 @@ const extraStyleNormal = css`
   font-size: ${theme.fonts.size.SM};
   font-weight: ${theme.fonts.weights.heavy};
   color: ${theme.colors.white};
-  background: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.primary};
+  background: ${({ $themeColor }) => $themeColor || theme.colors.primary};
+  /* background: ${({ $themeColor }) => $themeColor || theme.colors.primary}; */
+  border: 1px solid ${({ $themeColor }) => $themeColor};
   cursor: pointer;
 
   &:active {
-    color: ${theme.colors.white};
-    background: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
+    color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
+    background: ${({ $themeColor }) => $themeColor || theme.colors.primary};
+    border: 1px solid ${({ $themeColor }) => $themeColor};
   }
 
   &:hover:not(:disabled) {
-    color: ${theme.colors.primary};
+    color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
     background: ${theme.colors.white};
-    border: 1px solid ${theme.colors.primary};
+    border: 1px solid ${({ themeColor }) => themeColor};
   }
 
   &:disabled {

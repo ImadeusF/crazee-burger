@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../themes";
 import { devices } from "../../../../enums/devices";
+import ThemeColors from "../Main/Admin/AdminPanel/ThemeColors/ThemeColors";
 
-export default function Profile({ onClick}) {
+export default function Profile({ themeColor }) {
   const { username } = useParams(); //paramètres de l'url
   // useParams renvoi un objet, on peut déstructurer pour récupérer la valeur de la clé inputValue
   
   return (
-    <ProfileStyled>
+    <ProfileStyled $themeColor={themeColor}>
       <div className="info">
         <p>
           Hey, <b>{username}</b>
@@ -40,7 +41,7 @@ const ProfileStyled = styled.div`
       margin: 0;
       color: ${theme.colors.greyBlue};
       b {
-        color: ${theme.colors.primary};
+        color: ${({ $themeColor }) => $themeColor};
       }
     }
     a {
