@@ -29,18 +29,19 @@ const extraStyleNormal = css`
   font-size: ${theme.fonts.size.SM};
   font-weight: ${theme.fonts.weights.heavy};
   color: ${theme.colors.white};
-  background: ${({ $themeColor }) => $themeColor};
+  background: ${({ $themeColor }) => $themeColor || theme.colors.primary};
+  /* background: ${({ $themeColor }) => $themeColor || theme.colors.primary}; */
   border: 1px solid ${({ $themeColor }) => $themeColor};
   cursor: pointer;
 
   &:active {
-    color: ${theme.colors.white};
-    background: ${theme.colors.primary};
+    color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
+    background: ${({ $themeColor }) => $themeColor || theme.colors.primary};
     border: 1px solid ${({ $themeColor }) => $themeColor};
   }
 
   &:hover:not(:disabled) {
-    color: ${({ $themeColor }) => $themeColor};
+    color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
     background: ${theme.colors.white};
     border: 1px solid ${({ themeColor }) => themeColor};
   }

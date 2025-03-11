@@ -40,7 +40,7 @@ export default function NavbarRightSide() {
         themeColor={themeColor}
       />
       <ToastAdmin />
-      <Profile />
+      <Profile themeColor={themeColor}/>
     </NavbarRightSideStyled>
   );
 }

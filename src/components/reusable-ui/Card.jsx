@@ -261,7 +261,7 @@ const selectedStyle = css`
 
     &:active {
       background-color: ${theme.colors.white};
-      color: ${({ themeColor }) => themeColor};
+      color: ${({ $themeColor }) => $themeColor || theme.colors.primary};
     }
 
     &:disabled {
@@ -273,17 +273,17 @@ const selectedStyle = css`
     &.with-focus {
       border: 1px solid ${theme.colors.white};
       background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
+      color: ${({ themeColor }) => themeColor};
 
       &:hover {
-        color: ${theme.colors.white};
+        color: ${({ themeColor }) => themeColor};
         background-color: ${theme.colors.primary};
         border: 1px solid ${theme.colors.white};
       }
 
       &:active {
         background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
+        color: ${({ themeColor }) => themeColor};
       }
     }
   }
