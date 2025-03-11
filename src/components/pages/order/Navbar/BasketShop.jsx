@@ -6,7 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function BasketShop() {
-  const { basket, isBasketSmallDevicesActive, setIsBasketSmallDevicesActive } =
+  const { basket, isBasketSmallDevicesActive, setIsBasketSmallDevicesActive, themeColor } =
     useContext(OrderContext);
 
   const emptyBasket = basket.length === 0;
@@ -21,7 +21,7 @@ export default function BasketShop() {
   };
 
   return (
-    <BasketShopStyled onClick={() => handleClick()} className={isBasketSmallDevicesActive && "active"}>
+    <BasketShopStyled onClick={() => handleClick()} className={isBasketSmallDevicesActive && "active"} $themeColor={themeColor}>
       <button className="btn-store" aria-label="Admin-store">
         {emptyBasket ? null : (
           <span className="basket-quantity">{totalProductsInBasket}</span>
@@ -42,7 +42,7 @@ const BasketShopStyled = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${theme.colors.primary};
+      color: ${({ $themeColor }) => $themeColor};
     }
 
     .basket-quantity {
