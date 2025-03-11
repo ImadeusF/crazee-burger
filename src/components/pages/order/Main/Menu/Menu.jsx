@@ -31,6 +31,7 @@ export default function Menu() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    themeColor,
   } = useContext(OrderContext);
 
   const handleCardDelete = (e, idProductToDelete) => {
@@ -106,6 +107,7 @@ export default function Menu() {
                     isOverlapImageVisible={
                       convertStringToBoolean(isAvailable) === false
                     } //de base isAvailable is a string
+                    themeColor={themeColor}
                   />
                 </div>
               </motion.div>

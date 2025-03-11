@@ -82,7 +82,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyle = styled.div`
-  background: ${(props) => props.$themeColor};
+  background: ${({ themeColor }) => themeColor};
   height: 100vh;
   display: flex;
   justify-content: center;
