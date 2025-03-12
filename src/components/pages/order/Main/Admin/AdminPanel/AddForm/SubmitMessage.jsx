@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../../themes";
 import { FiCheck } from "react-icons/fi";
+import { devices } from "../../../../../../../enums/devices";
 
 export default function SubmitMessage() {
   return (
@@ -30,5 +31,12 @@ const SubmitMessageStyled = styled.div`
     margin-left: 5px;
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.success};
+  }
+
+  @media ${devices.md} {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
   }
 `;

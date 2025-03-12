@@ -45,12 +45,13 @@ const FormStyled = styled.form`
     align-items: center;
     position: relative;
     top: 3px;
+    height: 100%;
   }
 
   @media ${devices.md} {
     box-sizing: border-box;
     justify-content: center;
-    align-items: center;
+    align-self: center;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
@@ -59,6 +60,12 @@ const FormStyled = styled.form`
       "input-fields"
       "input-fields"
       "submit-button";
-    width: 90%;
+    width: 100%;
+  
+    .form-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
