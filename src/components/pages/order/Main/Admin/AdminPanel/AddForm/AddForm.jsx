@@ -7,7 +7,8 @@ import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
-  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+  const { username, handleAdd, newProduct, setNewProduct } =
+    useContext(OrderContext);
   const { isSubmited, displaySuccessMessage } = useSuccessMessage();
 
   const handleSubmit = (e) => {
@@ -26,7 +27,6 @@ export default function AddForm() {
   const handleChange = (e) => {
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
   };
-
 
   return (
     <Form
