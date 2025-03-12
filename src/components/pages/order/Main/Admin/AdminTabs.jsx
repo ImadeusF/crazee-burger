@@ -5,6 +5,7 @@ import { theme } from "../../../../../themes";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { getTabsConfig } from "./getTabsConfig";
+import { devices } from "../../../../../enums/devices";
 
 export default function AdminTabs() {
   const {
@@ -43,7 +44,12 @@ export default function AdminTabs() {
 
 const AdminTabsStyled = styled.div`
   display: flex;
-
+  
+  @media ${devices.xsm} {
+    padding-left: 0;
+    justify-content: center;
+  }
+  
   .is-active {
     background: ${theme.colors.background_dark};
     color: ${theme.colors.white};
@@ -53,4 +59,6 @@ const AdminTabsStyled = styled.div`
   button {
     margin-left: 1px;
   }
+
+ 
 `;
