@@ -61,4 +61,8 @@ const TabStyled = styled.button`
   @media ${devices.md} {
     padding: 0px 10px;
   }
+  @media ${devices.xsm} {
+    left: 0%;
+    padding: 0px 15px;
+  }
 `;

@@ -83,13 +83,13 @@ export default function OrderPage() {
 
 const OrderPageStyle = styled.div`
   background: ${({ $themeColor }) => $themeColor};
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    height: 95vh;
+    height: 95dvh;
     width: 1400px;
     display: flex;
     flex-direction: column;

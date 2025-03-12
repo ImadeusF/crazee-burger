@@ -31,7 +31,6 @@ const AdminPanelStyled = styled.div`
   box-sizing: border-box;
 
   @media ${devices.md} {
-    height: auto;
-    min-height: 60vh;
+    height: 60dvh;
   }
 `;
