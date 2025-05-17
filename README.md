@@ -49,6 +49,3 @@ A responsive web app allowing customers to browse and select food from a menu. A
 <div style="display: inline-block; margin-right: 5px;">
   <img alt="Static Badge" src="https://img.shields.io/badge/program%20-%20github%20-%20red?style=for-the-badge">
 </div>
-
-### 🎓 Crédits
-This web app was developed as part of the **"React en Entreprise"** course by ViDev, covering over 200 lessons.
